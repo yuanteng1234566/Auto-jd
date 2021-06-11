@@ -784,6 +784,16 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_tyt.js"
             }
         },
+       {
+      "name": "柠檬省钱大赢家",
+      "type": "cron",
+      "time": "8 0,6-23/1 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_dyj.js"
+      }
+    },
         {
             "name": "京东试用",
             "type": "cron",
