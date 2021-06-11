@@ -805,6 +805,16 @@
             }
         },
         {
+            "name": "柠檬京喜牧场",
+            "type": "cron",
+            "time": "0 10 * * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxmc.js"
+            }
+        },
+        {
             "name": "京东试用",
             "type": "cron",
             "time": "40 8 * * *",
