@@ -11,10 +11,10 @@ cron 15 0,6,13,19,21 * * * ddo_pk.js
 ============Quantumultx===============
 [task_local]
 #京享值PK
-15 0,6,13,19,21 * * * https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js, tag=京享值PK
+15 0,6,13,19,21 * * * http://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js, tag=京享值PK
 ================Loon==============
 [Script]
-cron "15 0,6,13,19,21 * * *" script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js,tag=京享值PK
+cron "15 0,6,13,19,21 * * *" script-path=http://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js,tag=京享值PK
 ===============Surge=================
 京享值PK = type=cron,cronexp="15 0,6,13,19,21 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js
 ============小火箭=========
