@@ -79,6 +79,7 @@ jobs:
       JD_JXD_EXCHANGE: ${{ secrets.JD_JXD_EXCHANGE}}
       TYT_PACKETID: ${{ secrets.TYT_PACKETID}}
       CHB_PACKETID: ${{ secrets.CHB_PACKETID}}
+      InviterPin: ${{ secrets.InviterPin}}
       JXNC_NOTIFY_LEVEL: ${{ secrets.JXNC_NOTIFY_LEVEL}}
       
     steps:
