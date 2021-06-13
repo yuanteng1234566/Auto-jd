@@ -149,8 +149,7 @@ async function jdDreamFactory() {
       await helpAuthor();
       $.packetIdArr = [
         'f5d0e428bc4a40dc8984db2cd4c2b54a',
-        'f08c120405284e72a924a2b2bdbd26ae',
-        'e216a7ac4da94556844ed6af4e7d2ca5'
+        'f08c120405284e72a924a2b2bdbd26ae'
       ]
 
       for (let code of $.packetIdArr) {
@@ -1004,8 +1003,8 @@ async function tuanActivity() {
   }
 }
 async function joinLeaderTuan() {
-  let res = await updateTuanIdsCDN(), res2 = await updateTuanIdsCDN("https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json")
-  if (!res) res = await updateTuanIdsCDN('https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json');
+  let res = await updateTuanIdsCDN(), res2 = await updateTuanIdsCDN("https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json")
+  if (!res) res = await updateTuanIdsCDN('https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json');
   $.authorTuanIds = [...(res && res.tuanIds || []),...(res2 && res2.tuanIds || [])]
   if ($.authorTuanIds && $.authorTuanIds.length) {
     for (let tuanId of $.authorTuanIds) {
@@ -1228,7 +1227,7 @@ function tuanAward(activeId, tuanId, isTuanLeader = true) {
   })
 }
 
-function updateTuanIdsCDN(url = 'https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json') {
+function updateTuanIdsCDN(url = 'https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json') {
   return new Promise(async resolve => {
     const options = {
       url: `${url}?${new Date()}`, "timeout": 10000, headers: {
@@ -1382,7 +1381,7 @@ function requireConfig() {
       console.log(`拼团活动ID: 获取成功 ${tuanActiveId}`)
     } else {
       if (!$.tuanConfigs) {
-        await updateTuanIdsCDN('https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json');
+        await updateTuanIdsCDN('https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json');
         if ($.tuanConfigs && $.tuanConfigs['tuanActiveId']) {
           tuanActiveId = $.tuanConfigs['tuanActiveId'];
           console.log(`拼团活动ID: 获取成功 ${tuanActiveId}`)
