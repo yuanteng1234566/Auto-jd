@@ -868,7 +868,7 @@ cron "36 0,6-23/2 * * *" script-path=https://raw.githubusercontent.com/star261/j
     }
     return shuffled.slice(min);
   }
-  function getAuthorShareCode(url = "https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/jd_zoo.json") {
+  function getAuthorShareCode(url = "https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_zoo.json") {
     return new Promise(async resolve => {
       const options = {
         "url": `${url}?${new Date()}`,
