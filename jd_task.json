@@ -245,16 +245,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxnc.js"
             }
         },
-        {
-            "name": "京喜农场2",
-            "type": "cron",
-            "time": "30 10,15,21 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxnc2.js"
-            }
-        },
+       
         {
             "name": "京东快递签到",
             "type": "cron",
@@ -765,13 +756,13 @@
             }
         },
         {
-            "name": "柠檬拆红包",
+            "name": "砍价",
             "type": "cron",
             "time": "12 0,6-23/1 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_chb.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_kj.js"
             }
         },
         {
