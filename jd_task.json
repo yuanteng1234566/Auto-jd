@@ -672,7 +672,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/JD_tencent_scf/raw/main/jd_zooMap.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zooMap.js"
       }
     },
         {
@@ -813,7 +813,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/JD_tencent_scf/raw/main/jd_zjb.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zjb.js"
       }
     },
       
