@@ -406,6 +406,15 @@ function helpAuthor() {
         "Cookie": cookie,
       }
     }
+    let options3 = {
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"f5c9a236c2bc4ec480ff926f87463da910151623859272649","inviter":"ciQi8Gp1pMmnNaW-3Pf0xA","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      headers: {
+        "Origin": "https://618redpacket.jd.com",
+        "Host": "api.m.jd.com",
+        "User-Agent": "jdapp;iPhone;9.5.2;14.3;6898c30638c55142969304c8e2167997fa59eb53;network/wifi;ADID/F108E1B6-8E30-477C-BE54-87CF23435488;supportApplePay/0;hasUPPay/0;hasOCPay/0;model/iPhone9,2;addressid/4585826605;supportBestPay/0;appBuild/167650;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1",
+        "Cookie": cookie,
+      }
+    }
     $.get(options, async (err, resp, data) => {
       try {
         data = JSON.parse(data);
@@ -420,6 +429,19 @@ function helpAuthor() {
       }
     });
     $.get(options2, async (err, resp, data) => {
+      try {
+        data = JSON.parse(data);
+        console.log(data.data.helpResult.errMsg)
+        if (data.data.helpResult.code == 16005) {
+          await helpAuthor2()
+        }
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+     $.get(options3, async (err, resp, data) => {
       try {
         data = JSON.parse(data);
         console.log(data.data.helpResult.errMsg)
@@ -455,6 +477,15 @@ function helpAuthor2() {
         "Cookie": cookie,
       }
     }
+    let options3 = {
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"f5c9a236c2bc4ec480ff926f87463da910151623859272649","inviter":"ciQi8Gp1pMmnNaW-3Pf0xA","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      headers: {
+        "Origin": "https://618redpacket.jd.com",
+        "Host": "api.m.jd.com",
+        "User-Agent": "jdapp;iPhone;9.5.2;14.3;6898c30638c55142969304c8e2167997fa59eb53;network/wifi;ADID/F108E1B6-8E30-477C-BE54-87CF23435488;supportApplePay/0;hasUPPay/0;hasOCPay/0;model/iPhone9,2;addressid/4585826605;supportBestPay/0;appBuild/167650;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1",
+        "Cookie": cookie,
+      }
+    }
     $.get(options, async (err, resp, data) => {
       try {
         data = JSON.parse(data);
@@ -466,6 +497,16 @@ function helpAuthor2() {
       }
     });
     $.get(options2, async (err, resp, data) => {
+      try {
+        data = JSON.parse(data);
+        console.log(data.data.helpResult.errMsg)
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve();
+      }
+    });
+    $.get(options3, async (err, resp, data) => {
       try {
         data = JSON.parse(data);
         console.log(data.data.helpResult.errMsg)
