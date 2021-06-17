@@ -35,7 +35,7 @@ $.inviteList = [
 $.pkInviteList = [];
 $.secretpInfo = {};
 $.innerPkInviteList = [
-  'sSKNX-MpqKOJsNu8n5PcVgAm_hiCTFd66yPN_IAHBmmnqybcbQNy4RKl8qFMQY-t'
+  'sSKNX-MpqKOJsNu8n5PcVgAm_hiCTFd66yPN_IAHBmmnqybcbQNy4RKl8qFMQY-s'
 ];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -90,6 +90,7 @@ if ($.isNode()) {
     }catch (e) {
       res = []
     }
+    sif(!res){res = [];}
     res2 = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jd_zoo.json');
     res3 = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
     if(res2.length > 3){
@@ -103,7 +104,7 @@ if ($.isNode()) {
     $.pkInviteList.push(...$.innerPkInviteList);
   }
   for (let i = 0; i < cookiesArr.length; i++) {
-    $.cookie = cookiesArr[i];
+      $.cookie = cookiesArr[i] + `joyytoken=50084${joyToken};`;
     $.canHelp = true;
     $.UserName = decodeURIComponent($.cookie.match(/pt_pin=([^; ]+)(?=;?)/) && $.cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     if (!$.secretpInfo[$.UserName]) {
