@@ -389,7 +389,7 @@ function help2() {
 function helpAuthor() {
   return new Promise(async (resolve) => {
     let options = {
-      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"9ae609531e6c456580da2e20ea14865089331623945665369","inviter":"QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"e2fa3849a9394f03b502116ed2f5f1f574191624032071310","inviter":"QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
       headers: {
         "Origin": "https://618redpacket.jd.com",
         "Host": "api.m.jd.com",
@@ -398,7 +398,7 @@ function helpAuthor() {
       }
     }
     let options2 = {
-      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"37bd8bf244ea4729bca8093a368e46eb11371623945669091","inviter":"lvrc39T3kQghrSUnfPw_Ao1lQCGOxXeKmhPwSP7x9D0","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"79ab82a96d584ba19b9f67424d9662d839521624032096590","inviter":"lvrc39T3kQghrSUnfPw_Ao1lQCGOxXeKmhPwSP7x9D0","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
       headers: {
         "Origin": "https://618redpacket.jd.com",
         "Host": "api.m.jd.com",
@@ -407,7 +407,7 @@ function helpAuthor() {
       }
     }
     let options3 = {
-      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"bef2a95cc222496b8467e5cc941284d521361623945671004","inviter":"ciQi8Gp1pMmnNaW-3Pf0xA","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"33f1b454c0374f71b1f95007bdac693132971624032110676","inviter":"ciQi8Gp1pMmnNaW-3Pf0xA","helpType":"1"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
       headers: {
         "Origin": "https://618redpacket.jd.com",
         "Host": "api.m.jd.com",
@@ -460,7 +460,7 @@ function helpAuthor() {
 function helpAuthor2() {
   return new Promise(async (resolve) => {
     let options = {
-      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"9ae609531e6c456580da2e20ea14865089331623945665369","inviter":"QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"e2fa3849a9394f03b502116ed2f5f1f574191624032071310","inviter":"QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
       headers: {
         "Origin": "https://618redpacket.jd.com",
         "Host": "api.m.jd.com",
@@ -469,7 +469,7 @@ function helpAuthor2() {
       }
     }
     let options2 = {
-      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"37bd8bf244ea4729bca8093a368e46eb11371623945669091","inviter":"lvrc39T3kQghrSUnfPw_Ao1lQCGOxXeKmhPwSP7x9D0","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"79ab82a96d584ba19b9f67424d9662d839521624032096590","inviter":"lvrc39T3kQghrSUnfPw_Ao1lQCGOxXeKmhPwSP7x9D0","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
       headers: {
         "Origin": "https://618redpacket.jd.com",
         "Host": "api.m.jd.com",
@@ -478,7 +478,7 @@ function helpAuthor2() {
       }
     }
     let options3 = {
-      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"bef2a95cc222496b8467e5cc941284d521361623945671004","inviter":"ciQi8Gp1pMmnNaW-3Pf0xA","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
+      url: `https://api.m.jd.com/?functionId=openRedEnvelopeInteract&body={"linkId":"DA4SkG7NXupA9sksI00L0g","redEnvelopeId":"33f1b454c0374f71b1f95007bdac693132971624032110676","inviter":"ciQi8Gp1pMmnNaW-3Pf0xA","helpType":"2"}&t=1623064535450&appid=activities_platform&clientVersion=3.3.6`,
       headers: {
         "Origin": "https://618redpacket.jd.com",
         "Host": "api.m.jd.com",
