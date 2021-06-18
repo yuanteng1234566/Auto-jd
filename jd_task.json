@@ -506,6 +506,16 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_monk_pasture.js"
             }
         },
+       {
+            "name": "女装盲盒",
+            "type": "cron",
+            "time": "20 9,23 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_nzmh.js"
+            }
+        },
         {
             "name": "店铺关注有礼",
             "type": "cron",
