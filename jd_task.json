@@ -315,16 +315,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_necklace.js"
             }
         },
-        {
-            "name": "女装盲盒",
-            "type": "cron",
-            "time": "20 9,23 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_nzmh.js"
-            }
-        },
+      
         {
             "name": "东东萌宠",
             "type": "cron",
@@ -645,27 +636,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_adolf_superbox.js"
             }
         },
-       
-        {
-            "name": "家电星推官",
-            "type": "cron",
-            "time": "0 0 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_xtg.js"
-            }
-        },
-        {
-            "name": "家电星推官好友互助",
-            "type": "cron",
-            "time": "0 0 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_xtg_help.js"
-            }
-        },
+      
         {
             "name": "金榜创造营",
             "type": "cron",
