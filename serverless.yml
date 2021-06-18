@@ -52,13 +52,13 @@ inputs:
           name: halfredrain_zooCollect
           cronExpression: "2 1,31 0,6-23/1 * * * *"
           enable: true
-          argument: jd_zooCollect&jd_wxj&jd_tyt&jd_big_winner&jd_zjb&jd_z_health_community
+          argument: jd_wxj&jd_tyt&jd_big_winner&jd_zjb&jd_z_health_community
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #省钱大赢家之翻翻乐
         parameters:
           name: dailyegg_healthcommunity
           cronExpression: "0 1,30 0,5-18/2,18-21/1 * * * *"
           enable: true
-          argument: jd_daily_egg&jd_zoo&jd_super_redrain&jd_mohe
+          argument: jd_daily_egg&jd_super_redrain&jd_mohe
     - timer: #东东超市 #京喜财富岛 #京享值PK
         parameters:
           name: cfd_superMarket
