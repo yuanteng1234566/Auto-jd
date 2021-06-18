@@ -645,36 +645,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_adolf_superbox.js"
             }
         },
-        {
-            "name": "618动物联萌",
-            "type": "cron",
-            "time": "35 0,5-23/2 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zoo.js"
-            }
-        },
-        {
-            "name": "618动物联萌收集金币",
-            "type": "cron",
-            "time": "*/30 0,5-23/1 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zooCollect.js"
-            }
-        },
-       {
-      "name": "618动物联萌地图任务",
-      "type": "cron",
-      "time": "10 12 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zooMap.js"
-      }
-    },
+       
         {
             "name": "家电星推官",
             "type": "cron",
