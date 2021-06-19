@@ -1,6 +1,5 @@
 ###有条（科学）件（上网）的可以加入TG群防止失联，交流 TG群：https://t.me/asd920_Autojd
 
-
 # 为防止仓库再次被封，本仓库仅保留腾讯云函数、elecV2P两种方式运行
 # 想继续使用AC运行的朋友请移步原仓库，没有大的更新随缘维护：https://github.com/asd920/Auto-jd 
 
