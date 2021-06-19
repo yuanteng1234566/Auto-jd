@@ -699,6 +699,16 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ddo_pk.js"
             }
         },
+      {
+      "name": "京东电竞经理",
+      "type": "cron",
+      "time": "40 10 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_djjl.js"
+      }
+    },
         {
             "name": "砍价",
             "type": "cron",
