@@ -55,7 +55,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
             await list1()
             await info()
             await help()
-            if (process.env.HELPAUTHOR_WXJ && process.env.HELPAUTHOR_WXJ === 'false') {
+            if (process.env.HELPAUTHOR_WXJ && process.env.HELPAUTHOR_WXJ === 'true') {
                 await dslq()
             } else {
                 await helpAuthor()
