@@ -1,7 +1,9 @@
 /*
+
 [task_local]
-#大老板农场
-5 6-18/6 * * * 大老板农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+入口 极速版 赚金币 种水果
+#柠檬我是大老板农场
+5 0-23/6 * * * http://nm66.top/jd_wsdlb.js, tag=柠檬我是大老板农场, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 */
 
 
@@ -34,6 +36,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
+      ck2 = cookiesArr[Math.round(Math.random()*i)];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
       $.isLogin = true;
@@ -76,13 +79,34 @@ async function jdFruit() {
 if ($.info.data.firstJoinFlag === true) {
  $.log("您忘了种植新的水果，快打开极速版种植吧")
 
- allMessage += `京东账号${$.index}-${$.nickName || $.UserName}\n您忘了种植新的水果,内侧入口为：\nhttp://a8pck.cn/VbjDm${$.index !== cookiesArr.length ? '\n\n' : '\n\n'}`;
+ allMessage += `京东账号${$.index}-${$.nickName || $.UserName}\n您忘了种植新的水果,内侧入口为：\nhttp://h48t.com/2p0cs${$.index !== cookiesArr.length ? '\n\n' : '\n\n'}`;
 }else if ($.info.data.firstJoinFlag === false) {
     
         console.log(`\n当前种植水果：${$.info.data.plantInfo[0].cropName}\n当前阶段: ${$.info.data.plantInfo[0].nowStep}\n当前下一阶段还需要浇水：${$.info.data.plantInfo[0].upgradeWateringNum}次`)
        await help($.info.data.encPin)
-        
+        //\n当前进度：${$.watering.data.speedFarmPlantInfo.cropRate}%
         allMessage += `京东账号${$.index}-${$.nickName || $.UserName}\n当前种植水果：${$.info.data.plantInfo[0].cropName}\n当前阶段: ${$.info.data.plantInfo[0].nowStep}\n当前下一阶段还需要浇水：${$.info.data.plantInfo[0].upgradeWateringNum}次${$.index !== cookiesArr.length ? '\n\n' : '\n\n'}`;
+                if (getwat.code === 0 ){
+        $.log(`\n领取定时水滴：${getwat.data.collectWaterNumber}`)
+                    
+                }
+        
+       if($.info.data.plantInfo[0].status == 0){
+         $.log(`无需除草`)
+       }else 
+       if($.info.data.plantInfo[0].status == 1){
+         $.log(`需要除草`)
+         await chucao($.info.data.earthInfo[0].nowPlantId,$.info.data.encPin)
+         if(cc.errMsg == "success"){
+         $.log(`除草成功`)
+         }else 
+         if(cc.success == false){
+             $.log(cc.errMsg)
+             //break
+             
+         }
+       }
+        
         
         if ($.do.code === 0){       
  let taskList = $.do.data
@@ -100,29 +124,33 @@ if ($.info.data.firstJoinFlag === true) {
      }
      }
  }
-//if ($.info.data.ownWater * 0.1 > 1 ){
-    for (let i = 0 ; i < 3; i++){
-        await $.wait(5000)
+
      await jiaoshui($.info.data.earthInfo[0].nowPlantId)
+    
+     if (watering.success === true ){
+          $.log(parseInt(watering.data.property * 0.1))
+       cs = parseInt(watering.data.property * 0.1)
+     if (cs > 0 ){
+    for (let i = 0 ; i < cs; i++){
+        await $.wait(3000)
+        await jiaoshui($.info.data.earthInfo[0].nowPlantId)
     if (watering.code === 20004 ){
         $.log(`\n浇水水滴不足，快去做任务吧`)
           //break 
         }
 
         if (watering.code === 0 ){
-        $.log(`\n${watering.data.speedFarmPlantInfo.cropName}:\n还需水滴：${watering.data.speedFarmPlantInfo.nowStepNeedWater}`)
+        $.log(`\n${watering.data.speedFarmPlantInfo.cropName}:\n还需水滴：${watering.data.speedFarmPlantInfo.nowStepNeedWater}\n还需浇水：${watering.data.speedFarmPlantInfo.upgradeWateringNum}`)
         
         }
 
 }
     
-//}           
+}  
+}
 
 
-        if (getwat.code === 0 ){
-        $.log(`\n领取定时水滴：${getwat.data.collectWaterNumber}`)
-        
-        }
+
      
 }
 
@@ -277,6 +305,52 @@ headers: {
         });
     });
 }
+
+
+function chucao(plantId,encryptUid) {
+    return new Promise(async (resolve) => {
+
+                let options = {
+    url: `https://api.m.jd.com/?functionId=weeding&client=ios&clientVersion=14.3&networkType=4g&eid=eidIc2ff812158s1ARLLPvIBQjyII7trmiE3BQESzLTXqSC9s3TX28oQv3zQuaY+15FedjhWtgYfTsUSkl9FEDNBP8LQRrRx5GwEA93H4jSPYNJ1OvNs&fp=-1&uuid=75aeceef3046d8ce11d354ff89af9517a2e4aa18&osVersion=14.3&d_brand=iPhone&d_model=iPhone9,2&referer=-1&agent=-1&pageClickKey=-1&screen=414*736&lang=zh_CN&body={"linkId":"fzf6tK4xMfE2ICK4-T_iUw","plantId":"${plantId}","encryptUid":"${encryptUid}","antiToken":"g4utdunnt5ja7wazyp81624112440743frl8~NmZeSyVEbFNSd3V5dVBfBnl0AAtoRHpTBiUjb35DFm5vLUROOBEzLUF7G28iAAFBKBgVFA1EPwIVKDclGENXbm8iVlQiAwpTTx1lKSsTCG5vfmsaDUR6LUEnG29+PU9QLyFTADIAMkdXICZ4cFhbBXV8BF4yX25HV3h0dSdYVVMucQRkc0oKUwoyKhFmWzEQOTZCXQ1Eei1BKTQ5GENXbm8wX10zDzETDDI0Yy4FQ1EiKWsafTp0AQ0dZXcYQ0Jub2hrGiESClNZHWUlMBUdQXcYFRQNRCYYP2N9EWZQVR5+aA4UYUpmXVJychFmHE8ebyFTXCIBdEtBKzAhNUNBEC43FQJzB29EBHQsdT4GWAB8cFYOZ1M0AgEkMywqGRpCOzJCDGlXIRpaY2tvJ0NXECsnWVsnU2UBFCcjeDcDAVkpPUQJZ1RiQFJzc3l0VlkBIikEAHNKdBUQL2V3ZhlaAjU0RV0nRHpTCjJld2ZQTx5vLl5bc1x0SFp4fm85|~1624112440842~1~20201218~eyJ2aXdlIjoiMCIsImJhaW4iOnt9fQ==~1~~xlwr|doei:,1,0,0,0,0,1000,-1000,1000,-1000;dmei:,1,0,0,1000,-1000,1000,-1000,1000,-1000;emc:;emmm:;emcf:;ivli:;iivl:;ivcvj:;scvje:;ewhi:;1624112440733,1624112440839,0,0,0,0,0,0,0,0,0;88yu","frontendInitStatus":"s","platform":1}&appid=activities_platform&t=1624112445417 `,
+
+headers: {
+"Origin": "https://thebigboss.jd.com",
+"Host": "api.m.jd.com",
+      "User-Agent": "jdltapp;android;3.5.0;10;7303439343432346-7356431353233323;network/4g;model/PCAM00;addressid/4228801336;aid/7049442d7e415232;oaid/;osVer/29;appBuild/1587;psn/J7DoQdnbd16144pyXDtYAH6c3B9Rkr60|87;psq/7;adk/;ads/;pap/JA2020_3112531|3.5.0|ANDROID 10;osv/10;pv/16.58;jdv/;ref/com.jd.jdlite.lib.mission.allowance.AllowanceFragment;partner/oppo;apprpd/Allowance_Registered;eufv/1;Mozilla/5.0 (Linux; Android 10; PCAM00 Build/QKQ1.190918.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/045140 Mobile Safari/537.36",
+      "Cookie": ck2,
+      }
+                }
+      
+        $.get(options, async (err, resp, data) => {
+            try {
+
+                  cc = JSON.parse(data);
+
+                  
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve();
+            }
+        });
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function help(userpin) {
     return new Promise(async (resolve) => {
