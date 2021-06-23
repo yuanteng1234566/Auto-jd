@@ -77,5 +77,4 @@ inputs:
           cronExpression: "0 20 0,9,11,21 * * * *"
           enable: true
           argument: jd_pigPet&jd_syj&jd_kd&jd_jdzz&jd_nzmh&jd_monk_shop_follow_sku&jd_jump
-    variables: #  环境变量对象
       AAA: BBB # 不要删除，用来格式化对齐追加的变量的
