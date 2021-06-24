@@ -13,9 +13,8 @@ inputs:
   runtime: Nodejs12.16 # 运行环境 默认 Nodejs12.16
   region: ap-guangzhou # 函数所在区域
   description: This is a function in ${app} application.
-  memorySize: 64 # 内存大小，单位MB
-  Timeout: 86400 # 超时时间，单位秒
-  AsyncRunEnable: true # 是否启用异步执行
+  memorySize: 128 # 内存大小，单位MB
+  Timeout: 900 # 超时时间，单位秒
   events: #触发器
     - timer: #签到 #摇京豆 #店铺签到 #进店领豆
         parameters:
