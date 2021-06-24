@@ -190,6 +190,7 @@ jobs:
         run: |
           npm install
           npm install tencentcloud-sdk-nodejs
+          npm install png-js
 
       - name: "部署到腾讯云函数"
         run: node tencentscf.js
