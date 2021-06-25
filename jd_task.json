@@ -718,7 +718,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zjb.js"
       }
     },
-      
+      {
+            "name": "京东众筹",
+            "type": "cron",
+            "time": "20 12,14 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_hwsx.js"
+            }
+        },
         {
             "name": "京东试用",
             "type": "cron",
