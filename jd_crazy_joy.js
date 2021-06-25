@@ -30,11 +30,11 @@ const JD_API_HOST = 'https://api.m.jd.com/';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 let helpSelf = false // 循环助力，默认关闭
-let applyJdBean = 0; //疯狂的JOY京豆兑换，目前最小值为2000京豆，默认为 0 不开启京豆兑换
+let applyJdBean = 2000; //疯狂的JOY京豆兑换，目前最小值为2000京豆，默认为 0 不开启京豆兑换
 let cookiesArr = [], cookie = '', message = '';
 const inviteCodes = [
-  'RB2TGQv-YYrXD1_sWVNMKKt9zd5YaBeE@cKja3NFTxrmgD_t9vtIOZKt9zd5YaBeE@RB2TGQv-YYrXD1_sWVNMKKt9zd5YaBeE@qjrufhlydn9sR3EMFhYh9Kt9zd5YaBeE@K3rD96AaJSYDPU2HKSneAw==',
-  'RB2TGQv-YYrXD1_sWVNMKKt9zd5YaBeE@cKja3NFTxrmgD_t9vtIOZKt9zd5YaBeE@RB2TGQv-YYrXD1_sWVNMKKt9zd5YaBeE@qjrufhlydn9sR3EMFhYh9Kt9zd5YaBeE@K3rD96AaJSYDPU2HKSneAw=='
+  'mnOeEP7D6kqeWIZ7TSHvPat9zd5YaBeE@cKoCrVZRqwq_jKvW0I1NTZ6t9zd5YaBeE',
+  'mnOeEP7D6kqeWIZ7TSHvPat9zd5YaBeE@cKoCrVZRqwq_jKvW0I1NTZ6t9zd5YaBeE'
 ];
 const randomCount = $.isNode() ? 0 : 5;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
