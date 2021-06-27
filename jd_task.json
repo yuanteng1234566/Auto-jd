@@ -245,7 +245,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxnc.js"
             }
         },
-       
+
         {
             "name": "京东快递签到",
             "type": "cron",
@@ -315,7 +315,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_necklace.js"
             }
         },
-      
+
         {
             "name": "东东萌宠",
             "type": "cron",
@@ -506,7 +506,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_monk_pasture.js"
             }
         },
-      {
+        {
             "name": "泡泡大战",
             "type": "cron",
             "time": "1 0 * * *",
@@ -516,7 +516,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ppdz.js"
             }
         },
-       {
+        {
             "name": "女装盲盒",
             "type": "cron",
             "time": "20 9,23 * * *",
@@ -596,7 +596,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jump.js"
             }
         },
-    
+
         {
             "name": "赢一加新品手机",
             "type": "cron",
@@ -617,7 +617,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_adolf_superbox.js"
             }
         },
-      
+
         {
             "name": "金榜创造营",
             "type": "cron",
@@ -658,16 +658,16 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ddo_pk.js"
             }
         },
-      {
-      "name": "京东电竞经理",
-      "type": "cron",
-      "time": "40 10 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_djjl.js"
-      }
-    },
+        {
+            "name": "京东电竞经理",
+            "type": "cron",
+            "time": "40 10 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_djjl.js"
+            }
+        },
         {
             "name": "砍价",
             "type": "cron",
@@ -688,7 +688,7 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_tyt.js"
             }
         },
-      {
+        {
             "name": "挖现金",
             "type": "cron",
             "time": "20 0,6-23/1 * * *",
@@ -708,17 +708,17 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxmc.js"
             }
         },
-      {
-      "name": "柠檬赚金币",
-      "type": "cron",
-      "time": "45 0,6-23/1 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zjb.js"
-      }
-    },
-      {
+        {
+            "name": "柠檬赚金币",
+            "type": "cron",
+            "time": "45 0,6-23/1 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zjb.js"
+            }
+        },
+        {
             "name": "京东众筹",
             "type": "cron",
             "time": "20 12,14 * * *",
@@ -736,6 +736,36 @@
             "job": {
                 "type": "runjs",
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_try.js"
+            }
+        },
+        {
+            "name": "东东乐园",
+            "type": "cron",
+            "time": "18 7 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ddly.js"
+            }
+        },
+        {
+            "name": "欧洲狂欢杯",
+            "type": "cron",
+            "time": "30 7 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_khb.js"
+            }
+        },
+        {
+            "name": "QQ星",
+            "type": "cron",
+            "time": "1 0-23/2 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_qqxing.js"
             }
         },
         {
