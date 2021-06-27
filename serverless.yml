@@ -55,10 +55,10 @@ inputs:
           argument: jd_zjb&jd_necklace&jd_kj&jd_bookshop&jd_z_health_community
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #挖现金 #推一推 #省钱大赢家之翻翻乐
         parameters:
-          name: dailyegg_superredrain_mohe_bigwinner
+          name: dailyegg_superredrain_mohe
           cronExpression: "0 1,30 0,5-23/2 * * * *"
           enable: true
-          argument: jd_daily_egg&jd_super_redrain&jd_mohe&jd_tyt&jd_big_winner&jd_qqxing.js
+          argument: jd_daily_egg&jd_super_redrain&jd_mohe&jd_tyt&jd_qqxing.js
     - timer: #东东超市 #京喜财富岛 #京享值PK #京喜牧场
         parameters:
           name: cfd_superMarket
