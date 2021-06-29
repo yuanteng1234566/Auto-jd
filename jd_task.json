@@ -758,6 +758,16 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_qqxing.js"
             }
         },
+      {
+            "name": "特物Z",
+            "type": "cron",
+            "time": "30 11 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
+            }
+        },
         {
             "name": "超级无线组队分京豆",
             "type": "cron",
