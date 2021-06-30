@@ -759,13 +759,13 @@
             }
         },
       {
-            "name": "特物Z",
+            "name": "零食街",
             "type": "cron",
-            "time": "30 11 * * *",
+            "time": "0 11 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_lsj.js"
             }
         },
         {
