@@ -724,7 +724,7 @@ function getAuthorShareCode(url) {
   })
 }
 async function getRandomCode() {
-  await $.http.get({url: `https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/master/shareCodes/jd_zz.json`, timeout: 10000}).then(async (resp) => {
+  await $.http.get({url: `https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/master/shareCodes/jd_zz.json`, timeout: 10000}).then(async (resp) => {
     if (resp.statusCode === 200) {
       try {
         let { body } = resp;
