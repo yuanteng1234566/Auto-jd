@@ -82,13 +82,13 @@ async function jsRedPacket() {
     await invite();
     await sign();//极速版签到提现
     await reward_query();
-    for (let i = 0; i < 3; ++i) {
+    for (let i = 0; i < 5; ++i) {
       await redPacket();//开红包
-      await $.wait(500)
+      await $.wait(1000)
     }
     await getPacketList();//领红包提现
     await signPrizeDetailList();
-    await showMsg()
+    //await showMsg()
   } catch (e) {
     $.logErr(e)
   }
@@ -151,7 +151,7 @@ async function sign() {
 function reward_query() {
   return new Promise(resolve => {
     $.get(taskGetUrl("spring_reward_query", {
-      "inviter": ["hJyuwiDvDEc5-jIeec4Iyg", "AEIIwA6L3k8ePzU3fXDzg8sPlLyAUpJKplSENnlQTGA"][Math.floor((Math.random() * 2))],
+      "inviter": ["QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA", "ciQi8Gp1pMmnNaW-3Pf0xA"][Math.floor((Math.random() * 2))],
       linkId
     }), async (err, resp, data) => {
       try {
@@ -178,7 +178,7 @@ function reward_query() {
 }
 async function redPacket() {
   return new Promise(resolve => {
-    $.get(taskGetUrl("spring_reward_receive",{"inviter":["hJyuwiDvDEc5-jIeec4Iyg","AEIIwA6L3k8ePzU3fXDzg8sPlLyAUpJKplSENnlQTGA"][Math.floor((Math.random()*2))],linkId}),
+    $.get(taskGetUrl("spring_reward_receive",{"inviter":["QB8VI7-2pqtcB2MrectD7w9Vy4C4h6SDPk5rCLbnuEA", "ciQi8Gp1pMmnNaW-3Pf0xA"][Math.floor((Math.random()*2))],linkId}),
         async (err, resp, data) => {
           try {
             if (err) {
