@@ -13,7 +13,7 @@ let useInfo = {};
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
-let newShareCodes = [];
+let newShareCodes = [' 08EFA799F8D5FB996767AB8D5F84C302211790C5940735B3C8CB3C719CB08DC349336DE54E26AA8F2834B248E6398CB7A755DF4FDAE585EC3E1ABE26F3DD3CFFC956D12974FF00A045D8E31A84FE84C18A8357DE96A1F617B8AC4D64BC24B689'];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
