@@ -17,15 +17,6 @@ let cookiesArr = [], cookie = '', message;
 let InviterPin = 'x4zBD58QffhhGDC18ljJZEMP0mswe3bYrB3AAtKQqFc='; //
 
 
-if (process.env.InviterPin) {
-  InviterPin = process.env.InviterPin;
-}
-
-
-
-
-
-
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
