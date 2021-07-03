@@ -216,16 +216,6 @@
             }
         },
         {
-            "name": "京东宠汪汪喂食",
-            "type": "cron",
-            "time": "15 0,7-23 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_joy_feedPets.js"
-            }
-        },
-        {
             "name": "宠汪汪积分兑换奖品",
             "type": "cron",
             "time": "0 0-16/8 * * *",
@@ -497,16 +487,6 @@
             }
         },
         {
-            "name": "蒙牛有机牧场",
-            "type": "cron",
-            "time": "1 7-23/2 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_monk_pasture.js"
-            }
-        },
-        {
             "name": "泡泡大战",
             "type": "cron",
             "time": "1 0 * * *",
@@ -544,16 +524,6 @@
             "job": {
                 "type": "runjs",
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_monk_shop_lottery.js"
-            }
-        },
-        {
-            "name": "京东每日红包雨（由sngxpro代管随缘维护）",
-            "type": "cron",
-            "time": "1 8-23 * * 1-5",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://ghproxy.com/https://raw.githubusercontent.com/sngxpro2/jdliveredrain/main/lxk0301_live_redrain.js"
             }
         },
         {
@@ -679,16 +649,6 @@
             }
         },
         {
-            "name": "挖现金",
-            "type": "cron",
-            "time": "20 0,6-23/1 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_wxj.js"
-            }
-        },
-        {
             "name": "柠檬京喜牧场",
             "type": "cron",
             "time": "0 10 * * * *",
@@ -716,16 +676,6 @@
             "job": {
                 "type": "runjs",
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_hwsx.js"
-            }
-        },
-        {
-            "name": "京东试用",
-            "type": "cron",
-            "time": "40 8 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_try.js"
             }
         },
         {
