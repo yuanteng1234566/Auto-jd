@@ -718,10 +718,20 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_lsj.js"
             }
         },
+            {
+            "name": "我是大老板",
+            "type": "cron",
+            "time": "5 0-23/6 * * *",
+            "running": true,
+            "job": {
+                "type": "runjs",
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_wsdlb.js"
+            }
+        },
          {
             "name": "有机牧场",
             "type": "cron",
-            "time": "0 0,1-22/2 * * * ",
+            "time": "0 0,1-22/2 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
