@@ -1,11 +1,6 @@
+
 /*
- * @Author: LXK9301 https://github.com/LXK9301
- * @Date: 2020-11-12 11:42:12 
- * @Last Modified by: LXK9301
- * @Last Modified time: 2021-1-22 14:27:20
- */
-/*
-东东小窝 https://gitee.com/lxk0301/jd_scripts/raw/master/jd_small_home.js
+东东小窝 
 现有功能：
 做日常任务任务，每日抽奖（有机会活动京豆，使用的是免费机会，不消耗WO币）
 自动使用WO币购买装饰品可以获得京豆，分别可获得5,20，50,100,200,400,700，1200京豆）
@@ -93,7 +88,7 @@ const JD_API_HOST = 'https://lkyl.dianpusoft.cn/api';
         console.log(`\n${$.UserName} 去给自己的下一账号 ${decodeURIComponent($.newShareCodes[(i + 1) % $.newShareCodes.length]['cookie'].match(/pt_pin=(.+?);/) && $.newShareCodes[(i + 1) % $.newShareCodes.length]['cookie'].match(/pt_pin=(.+?);/)[1])}助力，助力码为 ${code}\n`)
         await createAssistUser(code, $.createAssistUserID);
       }
-      console.log(`\n去帮助作者:LXK9301\n`)
+      // console.log(`\n去帮助作者:LXK9301\n`)
       await helpFriends();
     }
   }
@@ -107,7 +102,7 @@ const JD_API_HOST = 'https://lkyl.dianpusoft.cn/api';
 async function smallHome() {
   await loginHome();
   await ssjjRooms();
-  // await helpFriends();
+  await helpFriends();
   if (!$.isUnLock) return;
   await createInviteUser();
   await queryDraw();
@@ -115,11 +110,11 @@ async function smallHome() {
   await doAllTask();
   await queryByUserId();
   await queryFurnituresCenterList();
-  await showMsg();
+  // await showMsg();
 }
 function showMsg() {
   return new Promise(resolve => {
-    // $.msg($.name, '', `【京东账号${$.index}】${$.nickName}\n${message}`);
+    $.msg($.name, '', `【京东账号${$.index}】${$.nickName}\n${message}`);
     resolve()
   })
 }
@@ -144,7 +139,7 @@ async function doChannelsListTask(taskId, taskType) {
 async function helpFriends() {
   await updateInviteCode();
   // if (!$.inviteCodes) await updateInviteCodeCDN();
-  await updateInviteCodeCDN('https://raw.sevencdn.com/zero205/updateTeam/master/shareCodes/jd_updateSmallHomeInviteCode.json');
+  await updateInviteCodeCDN('https://cdn.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/jd_updateSmallHomeInviteCode.json');
   if ($.inviteCodes && $.inviteCodes['inviteCode']) {
     for (let item of $.inviteCodes.inviteCode) {
       if (!item) continue
@@ -727,7 +722,7 @@ function loginHome() {
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data);
-            await login(data.data);
+            await login(data.data.lkEPin);
           }
         }
       } catch (e) {
@@ -738,6 +733,7 @@ function loginHome() {
     })
   })
 }
+
 function login(userName) {
   return new Promise(resolve => {
     const body = {
@@ -781,7 +777,7 @@ function login(userName) {
     })
   })
 }
-function updateInviteCode(url = 'https://raw.sevencdn.com/zero205/updateTeam/master/shareCodes/jd_updateSmallHomeInviteCode.json') {
+function updateInviteCode(url = 'https://cdn.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/jd_updateSmallHomeInviteCode.json') {
   return new Promise(resolve => {
     $.get({url}, async (err, resp, data) => {
       try {
