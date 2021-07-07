@@ -748,6 +748,26 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_yjmc.js"
             }
         },
+      {
+      "name": "汪汪乐园开工位",
+      "type": "cron",
+      "time": "50 7 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_joy_park_open.js"
+      }
+    },
+    {
+      "name": "汪汪乐园任务",
+      "type": "cron",
+      "time": "15 9 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_joy_park_task.js"
+      }
+    },
         {
             "name": "超级无线组队分京豆",
             "type": "cron",
