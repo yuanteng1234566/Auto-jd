@@ -727,5 +727,15 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_joy_park_task.js"
       }
     },
+       {
+      "name": "汪汪乐园合成",
+      "type": "cron",
+      "time": "20 0-23/3 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_joypark_joy.js"
+      }
+    },
     ]
 }
