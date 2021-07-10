@@ -32,10 +32,10 @@ const ShHelpAuthorFlag = true;//是否助力作者SH  true 助力，false 不助
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [];
 $.cookie = '';
-$.inviteList = [];
+$.inviteList = ['HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'];
 $.secretpInfo = {};
-$.ShInviteList = [];
-$.innerShInviteList = ['HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'];
+$.ShInviteList = ['HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'];
+$.innerShInviteList = [];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
