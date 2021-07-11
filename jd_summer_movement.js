@@ -32,10 +32,13 @@ const ShHelpAuthorFlag = true;//是否助力作者SH  true 助力，false 不助
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [];
 $.cookie = '';
-$.inviteList = ['HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'];
+$.inviteList = [];
 $.secretpInfo = {};
-$.ShInviteList = ['HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'];
+$.ShInviteList = [];
 $.innerShInviteList = [];
+$.sharecode = [
+  'HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'
+];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -115,8 +118,14 @@ const UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT :
       await takePostRequest('help');
       await $.wait(2000);
     }
+    if ($.sharecode && $.sharecode.length) console.log(`\n******开始帮【asd920】助力*********\n`);
+    for (let k = 0; k < $.sharecode.length && $.canHelp; k++) {
+      $.InviteId = $.sharecode[k];
+      console.log(`${$.UserName} 去助力 ${$.sharecode[k]}`);
+      await takePostRequest('help');
+      await $.wait(2000);
+    }
   }
-  
 
 })()
   .catch((e) => {
