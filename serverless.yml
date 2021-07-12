@@ -40,7 +40,7 @@ inputs:
           name: joy_moneyTree_plantBean_dreamFactory_jdfactory
           cronExpression: "0 3 0,6-23/1 * * * *"
           enable: true
-          argument: jd_moneyTree&jd_plantBean&jd_dreamFactory&jd_jdfactory&jd_z_health_energy
+          argument: jd_moneyTree&jd_plantBean&jd_dreamFactory&jd_jdfactory&jd_joy&jd_z_health_energy
     - timer: #宠汪汪积分兑换京豆 #签到领现金 #东东小窝 #京东直播 #金榜创造营 #全民开红包
         parameters:
           name: joyreward_cash_smallhome_live
