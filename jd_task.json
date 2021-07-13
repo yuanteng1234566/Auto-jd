@@ -744,7 +744,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/zasd920/Auto-jd/raw/main/jd_wxFans.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_wxFans.js"
       }
     },
       {
@@ -774,7 +774,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/zero205/JD_tencent_scf/raw/main/jd_zqfl.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zqfl.js"
       }
     }
     ]
