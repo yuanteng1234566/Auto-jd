@@ -35,7 +35,7 @@ $.cookie = '';
 $.inviteList = [];
 $.secretpInfo = {};
 $.ShInviteList = [];
-$.innerShInviteList = [];
+$.innerShInviteList = ['H8mphLbwLg6ldobIFdU20bdtkm-kz6CE'];
 $.sharecode = ['HcmphLbwLg6ldobIFdU20WPYWOJ3fm252MjiyqkmxLK2Nr2B_LAX1_0WZtOhrzi20-2JzcQX-E44EcByLIn6eA'];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -125,7 +125,7 @@ function randomString(e) {
     }
     if ($.sharecode && $.sharecode.length) console.log(`\n******开始帮【asd920】助力*********\n`);
     for (let k = 0; k < $.sharecode.length && $.canHelp; k++) {
-      $.InviteId = $.sharecode[k];
+      $.inviteId = $.sharecode[k];
       console.log(`${$.UserName} 去助力 ${$.sharecode[k]}`);
       await takePostRequest('help');
       await $.wait(2000);
