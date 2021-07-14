@@ -658,16 +658,6 @@
             }
         },
         {
-            "name": "欧洲狂欢杯",
-            "type": "cron",
-            "time": "30 7 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_khb.js"
-            }
-        },
-        {
             "name": "QQ星",
             "type": "cron",
             "time": "1 0-23/2 * * *",
