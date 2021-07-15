@@ -757,6 +757,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_dpqd.js"
       }
     },
+       {
+      "name": "发财大赢家",
+      "type": "cron",
+      "time": "30 8-23 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_big_winner.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
