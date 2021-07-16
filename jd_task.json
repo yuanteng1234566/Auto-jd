@@ -757,6 +757,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_big_winner.js"
       }
     },
+       {
+      "name": "万物皆可国创",
+      "type": "cron",
+      "time": "30 11 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
