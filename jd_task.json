@@ -768,6 +768,16 @@
       }
     },
       {
+      "name": "京喜签到",
+      "type": "cron",
+      "time": "5 0 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxqd.js"
+      }
+    },
+      {
       "name": "早起福利",
       "type": "cron",
       "time": "35 6 * * *",
