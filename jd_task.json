@@ -794,7 +794,7 @@
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_zqfl.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_goodMorning.js"
       }
     }
     ]
