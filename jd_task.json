@@ -787,16 +787,6 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxg.js"
       }
     },
-       {
-      "name": "抢京豆",
-      "type": "cron",
-      "time": "23 7 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_qjd.js"
-      }
-    },
       {
       "name": "早起福利",
       "type": "cron",
