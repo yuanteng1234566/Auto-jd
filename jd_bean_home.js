@@ -100,7 +100,7 @@ const JD_API_HOST = 'https://api.m.jd.com/';
               break;
             }
           } else {
-            console.log(`助力异常:${JSON.stringify(helpRes)}\n`);
+            //console.log(`助力异常:${JSON.stringify(helpRes)}\n`);
           }
         }
       }
