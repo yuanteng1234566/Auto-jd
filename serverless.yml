@@ -46,13 +46,13 @@ inputs:
           name: joyreward_cash_smallhome_live
           cronExpression: "0 0 0-16/8,20 * * * *"
           enable: true
-          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket&jd_hwsx
+          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket
     - timer: #健康社区 #旺旺开工位一次性
         parameters:
           name: healthcommunity
           cronExpression: "2 36 0,6-23/4 * * * *"
           enable: true
-          argument: jd_zjb&jd_kj&jd_bookshop&jd_z_health_community
+          argument: jd_zjb&jd_kj&jd_bookshop&jd_z_health_community&jd_productZ4Brand
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #挖现金 #推一推 #省钱大赢家之翻翻乐 
         parameters:
           name: dailyegg_superredrain_mohe
