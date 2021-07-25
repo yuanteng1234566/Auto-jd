@@ -777,6 +777,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxg.js"
       }
     },
+       {
+      "name": "特物",
+      "type": "cron",
+      "time": "30 22,11 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_productZ4Brand.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
