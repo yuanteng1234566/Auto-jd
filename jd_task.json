@@ -788,6 +788,16 @@
       }
     },
       {
+      "name": "京喜领红包",
+      "type": "cron",
+      "time": "4 2,10 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxlhb.js"
+      }
+    },
+      {
       "name": "早起福利",
       "type": "cron",
       "time": "35 6 * * *",
