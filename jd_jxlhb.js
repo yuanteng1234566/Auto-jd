@@ -46,7 +46,7 @@ const BASE_URL = 'https://wq.jd.com/cubeactive/steprewardv3'
       '助力逻辑：先自己京东账号相互助力，如有剩余助力机会，则助力作者\n' +
       '温馨提示：如提示助力火爆，可尝试寻找京东客服')
   let res = []
-   res = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/jxhb.json')
+   res = await getAuthorShareCode('https://raw.fastgit.org/asd920/updateTeam/main/shareCodes/jxhb.json')
   if (!res) {
     $.http.get({url: 'https://purge.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/jxhb.json'}).then((resp) => {}).catch((e) => $.log('刷新CDN异常', e));
     await $.wait(1000)
@@ -169,16 +169,18 @@ function getUserInfo() {
           // console.log('获取助力码', data)
           data = JSON.parse(data)
           if (data.iRet === 0) {
-            $.grades = [];
+            $.grades = []
+            $.helpNum = ''
             let grades = data.Data.gradeConfig
             for(let key of Object.keys(grades)){
               let vo = grades[key]
               $.grades.push(vo.dwGrade)
+              $.helpNum = vo.dwHelpTimes
             }
-            console.log(`获取助力码成功：${data.Data.strUserPin}\n`);
-            if (data.Data['dwCurrentGrade'] >= $.grades[$.grades.length - 1]) {
+                      if (data.Data.dwHelpedTimes === $.helpNum) {
               console.log(`${$.grades[$.grades.length - 1]}个阶梯红包已全部拆完\n`)
             } else {
+              console.log(`获取助力码成功：${data.Data.strUserPin}\n`);
               if (data.Data.strUserPin) {
                 $.packetIdArr.push({
                   strUserPin: data.Data.strUserPin,
