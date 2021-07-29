@@ -76,7 +76,7 @@ inputs:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
           cronExpression: "0 58 0,7,15,21 * * * *"
           enable: true
-          argument: jd_pigPet&jd_syj&jd_joy_reward&jd_kd&jd_jdzz&jd_nzmh&jd_jump&jd_djjl&jd_ddly&jd_goodMorning
+          argument: jd_pigPet&jd_syj&jd_joy_reward&jd_kd&jd_jdzz&jd_nzmh&jd_djjl&jd_ddly&jd_goodMorning
         environment: #  环境变量
         variables: #  环境变量对象
       AAA: BBB # 不要删除，用来格式化对齐追加的变量的
