@@ -257,15 +257,6 @@
             }
         },
         {
-            "name": "超级直播间红包雨",
-            "type": "cron",
-            "time": "0,30,31 20-23/1 18 * *",
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_live_redrain.js"
-            }
-        },
-        {
             "name": "京东抽奖机",
             "type": "cron",
             "time": "2 0 * * *",
@@ -524,16 +515,6 @@
             "job": {
                 "type": "runjs",
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_market_lottery.js"
-            }
-        },
-        {
-            "name": "跳跳乐瓜分京豆",
-            "type": "cron",
-            "time": "2 0,11,21 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jump.js"
             }
         },
         {
