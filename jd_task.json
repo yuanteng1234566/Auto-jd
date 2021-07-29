@@ -750,11 +750,11 @@
        {
       "name": "万物皆可国创",
       "type": "cron",
-      "time": "30 11 * * *",
+      "time": "50 0,6,10 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_olympic.js"
       }
     },
       {
