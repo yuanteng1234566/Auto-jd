@@ -1,7 +1,7 @@
 /*
 京喜签到
 cron 20 1 * * * jx_sign.js
-更新时间：2021-7-29
+更新时间：2021-7-31
 活动入口：京喜APP-我的-京喜签到
 
 已支持IOS双京东账号,Node.js支持N个京东账号
@@ -38,7 +38,7 @@ let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭�
 let cookiesArr = [], cookie = '', message;
 $.shareCodes = [];
 $.blackInfo = {}
-$.appId = 10001;
+$.appId = 10028;
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -59,12 +59,27 @@ if ($.isNode()) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+      $.isLogin = true;
+      await TotalBean()
+      if (!$.isLogin) {
+        continue
+      }
+      if (i === 0) console.log(`\n正在收集助力码请等待\n`)
+      await signhb(1)
+      await $.wait(3000)
+    }
+  }
+  for (let i = 0; i < cookiesArr.length; i++) {
+    if (cookiesArr[i]) {
+      cookie = cookiesArr[i];
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
       $.index = i + 1;
       $.isLogin = true;
       $.nickName = '';
       message = '';
       $.commonlist = []
-      $.blackInfo[$.UserName] = false
+      $.black = false
+      $.canHelp = true
       await TotalBean()
       console.log(`\n******开始【京东账号${$.index}】 ${$.nickName || $.UserName}*********\n`)
       if (!$.isLogin) {
@@ -75,48 +90,48 @@ if ($.isNode()) {
         }
         continue
       }
-      await signhb()
-      await $.wait(2000);
+      await signhb(2)
+      await $.wait(3000)
+      if ($.canHelp) {
+        if ($.shareCodes && $.shareCodes.length) {
+          console.log(`\n开始内部互助\n`)
+          for (let j = 0; j < $.shareCodes.length; j++) {
+            if ($.shareCodes[j].num == $.domax) {
+              $.shareCodes.splice(j, 1)
+              j--
+              continue
+            }
+            if ($.shareCodes[j].use === $.UserName) {
+              console.log(`不能助力自己`)
+              continue
+            }
+            console.log(`账号 ${$.UserName} 去助力 ${$.shareCodes[j].use} 的互助码 ${$.shareCodes[j].smp}`)
+            if ($.shareCodes[j].max) {
+              console.log(`您的好友助力已满`)
+              continue
+            }
+            await helpSignhb($.shareCodes[j].smp)
+            await $.wait(3000)
+            if (!$.black) $.shareCodes[j].num++
+            break
+          }
+        }
+      } else {
+        console.log(`今日已签到，无法助力好友啦~`)
+      }
       if (!$.black) {
         if ($.commonlist && $.commonlist.length) {
           console.log("开始做红包任务")
           for (let j = 0; j < $.commonlist.length; j++) {
             await dotask($.commonlist[j]);
-            await $.wait(2000);
+            await $.wait(3000);
           }
         } else {
           console.log("红包任务已完成")
         }
         await doubleSign()
-      }
-      if ($.black) $.blackInfo[$.UserName] = true
-    }
-  }
-  for (let i = 0; i < cookiesArr.length; i++) {
-    if (cookiesArr[i]) {
-      cookie = cookiesArr[i]
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-      if ($.shareCodes && $.shareCodes.length && !$.blackInfo[$.UserName]) {
-        console.log(`\n开始内部互助\n`)
-        for (let j = 0; j < $.shareCodes.length; j++) {
-          if ($.shareCodes[j].num == $.domax) {
-            $.shareCodes.splice(j, 1)
-            j--
-            continue
-          }
-          if ($.shareCodes[j].use === $.UserName) {
-            console.log(`不能助力自己`)
-            continue
-          }
-          console.log(`账号 ${$.UserName} 去助力 ${$.shareCodes[j].use} 的互助码 ${$.shareCodes[j].smp}`)
-          if ($.shareCodes[j].max) {
-            console.log(`您的好友助力已满`)
-            continue
-          }
-          await helpSignhb($.shareCodes[j].smp);
-          $.shareCodes[j].num++
-          await $.wait(3000);
-        }
+      } else {
+        console.log(`此账号已黑`)
       }
     }
   }
@@ -128,18 +143,16 @@ if ($.isNode()) {
     $.done();
   })
 
-// 签到
-function signhb() {
+// 查询信息
+function signhb(type = 1) {
   return new Promise((resolve) => {
-    $.get(taskUrl("fanxiantask/signhb/query", "signhb_source=1000&smp=&type=1", "signhb_source,smp,type"), async (err, resp, data) => {
+    $.get(taskUrl("fanxiantask/signhb/query"), async (err, resp, data) => {
       try {
         if (err) {
           console.log(JSON.stringify(err));
           console.log(`${$.name} query签到 API请求失败，请检查网路重试`);
         } else {
           data = JSON.parse(data.match(new RegExp(/jsonpCBK.?\((.*);*/))[1])
-          let helpNum = 0
-          $.black = false
           const {
             smp,
             commontask,
@@ -147,35 +160,43 @@ function signhb() {
             signlist = []
           } = data
           $.domax = domax
-          for (let key of Object.keys(signlist)) {
-            let vo = signlist[key]
-            if (vo.istoday === 1) {
-              if (vo.status === 1 && vo.tasklist.signtask.status === 1) {
-                console.log(`今日已签到`)
-              } else {
-                console.log(`此账号已黑`)
-                $.black = true
-                return
-              }
-            }
-          }
-          console.log(`【签到互助码】${smp}`)
+          let helpNum = 0
           if (helppic) helpNum = helppic.split(";").length - 1
-          if (helpNum) console.log(`已有${helpNum}人助力`)
-          for (let i = 0; i < commontask.length; i++) {
-            if (commontask[i].task && commontask[i].status != 2) {
-              $.commonlist.push(commontask[i].task)
-            }
-          }
-          if (status === 1) {
-            let max = false
-            if (helpNum == domax) max = true
-            $.shareCodes.push({
-              'use': $.UserName,
-              'smp': smp,
-              'num': helpNum || 0,
-              'max': max
-            })
+          switch (type) {
+            case 1:
+              if (status === 1) {
+                let max = false
+                if (helpNum == domax) max = true
+                $.shareCodes.push({
+                  'use': $.UserName,
+                  'smp': smp,
+                  'num': helpNum || 0,
+                  'max': max
+                })
+              }
+              break
+            case 2:
+              for (let key of Object.keys(signlist)) {
+                let vo = signlist[key]
+                if (vo.istoday === 1) {
+                  if (vo.status === 1 && vo.tasklist.signtask.status === 1) {
+                    console.log(`今日已签到`)
+                    $.canHelp = false
+                  } else {
+                    console.log(`今日未签到`)
+                  }
+                }
+              }
+              console.log(`【签到互助码】${smp}`)
+              if (helpNum) console.log(`已有${helpNum}人助力`)
+              for (let i = 0; i < commontask.length; i++) {
+                if (commontask[i].task && commontask[i].status != 2) {
+                  $.commonlist.push(commontask[i].task)
+                }
+              }
+              break
+            default:
+              break
           }
         }
       } catch (e) {
@@ -187,24 +208,38 @@ function signhb() {
   })
 }
 
-// 助力
+// 签到 助力
 function helpSignhb(smp) {
   return new Promise((resolve) => {
     $.get(taskUrl("fanxiantask/signhb/query", `signhb_source=1000&smp=${smp}&type=1`, "signhb_source,smp,type"), async (err, resp, data) => {
-        try {
-          if (err) {
-            console.log(JSON.stringify(err));
-            console.log(`${$.name} query助力 API请求失败，请检查网路重试`);
-          } else {
-            data = JSON.parse(data.match(new RegExp(/jsonpCBK.?\((.*);*/))[1])
+      try {
+        if (err) {
+          console.log(JSON.stringify(err))
+          console.log(`${$.name} query助力 API请求失败，请检查网路重试`)
+        } else {
+          data = JSON.parse(data.match(new RegExp(/jsonpCBK.?\((.*);*/))[1])
+          const {
+            signlist = []
+          } = data
+          for (let key of Object.keys(signlist)) {
+            let vo = signlist[key]
+            if (vo.istoday === 1) {
+              if (vo.status === 1 && vo.tasklist.signtask.status === 1) {
+                // console.log(`今日已签到`)
+              } else {
+                console.log(`此账号已黑`)
+                $.black = true
+              }
+            }
           }
-        } catch (e) {
-          $.logErr(e, resp);
-        } finally {
-          resolve(data);
         }
-      });
-  });
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve(data);
+      }
+    })
+  })
 }
 
 // 任务
@@ -259,13 +294,17 @@ function doubleSign() {
 
 function taskUrl(functionId, body = '', stk) {
   let url = ``
-  if (functionId === 'double_sign/IssueReward') {
-    url = `${JD_API_HOST}${functionId}?sceneval=2&g_login_type=1&_ste=1&g_ty=ajax`;
-  } else {
+  if (body) {
     url = `${JD_API_HOST}${functionId}?${body ? `${body}&` : ''}sceneval=2&g_login_type=1&_=${Date.now()}&_ste=1&callback=jsonpCBKC&g_ty=ls`;
     url += `&h5st=${decrypt(Date.now(), stk, '', url)}`;
     if (stk) {
       url += `&_stk=${encodeURIComponent(stk)}`;
+    }
+  } else {
+    if (functionId === 'double_sign/IssueReward') {
+      url = `${JD_API_HOST}${functionId}?sceneval=2&g_login_type=1&_ste=1&g_ty=ajax`;
+    } else {
+      url = `${JD_API_HOST}${functionId}?_=${Date.now()}&sceneval=2&g_login_type=1&callback=jsonpCBKC&g_ty=ls`
     }
   }
   return {
