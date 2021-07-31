@@ -778,6 +778,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_summer_mom_opencard.js"
       }
     },
+       {
+      "name": "定格夺冠",
+      "type": "cron",
+      "time": "50 0,10 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_championship.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
