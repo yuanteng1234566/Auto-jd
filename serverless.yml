@@ -46,7 +46,7 @@ inputs:
           name: joyreward_cash_smallhome_live
           cronExpression: "0 0 0-16/8,20 * * * *"
           enable: true
-          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket
+          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket&jd_opencard_championship
     - timer: #健康社区 #旺旺开工位一次性
         parameters:
           name: healthcommunity
