@@ -721,7 +721,7 @@
        {
       "name": "万物皆可国创",
       "type": "cron",
-      "time": "50 0,6,10 * * *",
+      "time": "55 0,7,13 * * *",
       "running": true,
       "job": {
         "type": "runjs",
@@ -771,7 +771,7 @@
         {
       "name": "母音甄选",
       "type": "cron",
-      "time": "50 0,16 * * *",
+      "time": "35 1,9,15 * * *",
       "running": true,
       "job": {
         "type": "runjs",
@@ -781,7 +781,7 @@
        {
       "name": "定格夺冠",
       "type": "cron",
-      "time": "50 0,10 * * *",
+      "time": "50 0,10,17 * * *",
       "running": true,
       "job": {
         "type": "runjs",
@@ -791,7 +791,7 @@
          {
       "name": "激情奔跑",
       "type": "cron",
-      "time": "50 0,10 * * *",
+      "time": "25 0,6,10 * * *",
       "running": true,
       "job": {
         "type": "runjs",
