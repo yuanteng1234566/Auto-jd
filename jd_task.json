@@ -788,6 +788,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_championship.js"
       }
     },
+         {
+      "name": "激情奔跑",
+      "type": "cron",
+      "time": "50 0,10 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_olympic_run.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
