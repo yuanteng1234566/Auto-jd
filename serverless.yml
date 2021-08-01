@@ -58,7 +58,7 @@ inputs:
           name: dailyegg_superredrain_mohe
           cronExpression: "0 1,30 0,5-23/2 * * * *"
           enable: true
-          argument: jd_daily_egg&jd_super_redrain&jd_mohe&jd_ylyn&jd_qqxing&jd_lsj
+          argument: jd_daily_egg&jd_super_redrain&jd_ylyn&jd_qqxing&jd_lsj
     - timer: #东东超市 #京喜财富岛 #京享值PK #京喜牧场
         parameters:
           name: cfd_superMarket
@@ -70,7 +70,7 @@ inputs:
           name: beanchange_crazyjoy_rankingList_beanhome_sgmh
           cronExpression: "0 30 2,9 * * * *"
           enable: true
-          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_jxd&jd_joy_park_task&jd_dpqd&jd_olympic&jd_jxg
+          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_jxd&jd_joy_park_task&jd_olympic&jd_jxg
     - timer: #金融养猪 #十元街 #京东快递 #京东赚赚 #女装盲盒  #跳跳乐瓜分京豆
         parameters:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
