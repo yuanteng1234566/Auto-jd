@@ -539,16 +539,6 @@
             }
         },
         {
-            "name": "5G超级盲盒",
-            "type": "cron",
-            "time": "0 0,6-23/3 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_mohe.js"
-            }
-        },
-        {
             "name": "京东电竞经理",
             "type": "cron",
             "time": "40 10 * * *",
@@ -698,16 +688,6 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_DrawEntrance.js"
       }
     },
-      {
-      "name": "店铺签到",
-      "type": "cron",
-      "time": "20 8 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_dpqd.js"
-      }
-    },
        {
       "name": "发财大赢家",
       "type": "cron",
@@ -751,7 +731,7 @@
        {
       "name": "奥运夺金挑战赛",
       "type": "cron",
-      "time": "20 21,11 * * *",
+      "time": "45 0,11,17 * * *",
       "running": true,
       "job": {
         "type": "runjs",
@@ -771,7 +751,7 @@
         {
       "name": "母音甄选",
       "type": "cron",
-      "time": "35 1,9,15 * * *",
+      "time": "35 0,9,15 * * *",
       "running": true,
       "job": {
         "type": "runjs",
@@ -781,7 +761,7 @@
        {
       "name": "定格夺冠",
       "type": "cron",
-      "time": "50 0,10,17 * * *",
+      "time": "15 0,10,17 * * *",
       "running": true,
       "job": {
         "type": "runjs",
