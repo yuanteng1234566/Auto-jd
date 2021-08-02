@@ -448,13 +448,13 @@
             }
         },
         {
-            "name": "京小兑",
+            "name": "店铺签到",
             "type": "cron",
             "time": "35 8 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxd.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_dpqd.js"
             }
         },
         {
