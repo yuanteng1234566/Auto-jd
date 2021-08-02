@@ -70,7 +70,7 @@ inputs:
           name: beanchange_crazyjoy_rankingList_beanhome_sgmh
           cronExpression: "0 30 2,9 * * * *"
           enable: true
-          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_jxd&jd_joy_park_task&jd_olympic&jd_jxg
+          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_olympic&jd_jxg
     - timer: #金融养猪 #十元街 #京东快递 #京东赚赚 #女装盲盒  #跳跳乐瓜分京豆
         parameters:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
