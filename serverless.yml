@@ -58,7 +58,7 @@ inputs:
           name: dailyegg_superredrain_mohe
           cronExpression: "0 1,30 0,5-23/2 * * * *"
           enable: true
-          argument: jd_daily_egg&jd_super_redrain&jd_ylyn&jd_qqxing&jd_lsj
+          argument: jd_daily_egg&jd_super_redrain&jd_ylyn&jd_qqxing&jd_lsj&jd_tyt
     - timer: #东东超市 #京喜财富岛 #京享值PK #京喜牧场
         parameters:
           name: cfd_superMarket
