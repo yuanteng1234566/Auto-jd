@@ -699,13 +699,23 @@
       }
     },
        {
-      "name": "万物皆可国创",
+      "name": "激扬奥运",
       "type": "cron",
       "time": "55 0,7,13 * * *",
       "running": true,
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_olympic.js"
+      }
+    },
+       {
+      "name": "特物z",
+      "type": "cron",
+      "time": "cron 23 8,9 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
       }
     },
       {
@@ -781,7 +791,7 @@
          {
       "name": "食力全开",
       "type": "cron",
-      "time": "1 1,11 * * *",
+      "time": "11 0,11 * * *",
       "running": true,
       "job": {
         "type": "runjs",
