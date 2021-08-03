@@ -1,15 +1,11 @@
 ###有条（科学）件（上网）的可以加入TG群防止失联，交流 TG群：https://t.me/asd920_Autojd
 
-# 为防止仓库再次被封，本仓库仅保留腾讯云函数、elecV2P两种方式运行
-# 想继续使用AC运行的朋友请移步原仓库，没有大的更新随缘维护：https://github.com/asd920/Auto-jd 
-
 ## 使用教程（不要fork！觉得有用的可以点个star :blush:）
-* > ~~Github Action 运行~~ (响应lxk大佬要求，删除AC教程)
+* > 【青龙】拉取仓库命令：`ql repo https://github.com/asd920/Auto-jd.git "jd_|jx_"  "backUp" "^(jd|JD|JS)[^_]|USER|sendNotify|MovementFaker|ZooFaker_Necklace"`
 * > 腾讯云函数部署【推荐】。[点此查看](./backUp/tencentscf.md)
 * > [elecV2P](https://github.com/elecV2/elecV2P) 部署【备用】。[点此查看](./backUp/elecV2P.md)
     * 安装教程：[点此查看](https://github.com/elecV2/elecV2P-dei/blob/master/docs/01-overview.md)  
     * 相关补充说明：[点此查看](./backUp/elecV2P.md)  
-
 
 ### 自动同步脚本教程：[点此查看](https://github.com/asd920/Auto-jd/blob/main/backUp/reposync.md)  </br>
 
@@ -154,9 +150,6 @@
 
 - QuantumultX Task脚本订阅链接: [lxk0301_gallery.json](https://gitee.com/lxk0301/jd_scripts/raw/master/QuantumultX/lxk0301_gallery.json)，cookie(重写)订阅链接: [lxk0301_cookies.conf](https://gitee.com/lxk0301/jd_scripts/raw/master/QuantumultX/lxk0301_cookies.conf)
 
-## 通知频道 [https://t.me/jdfruit](https://t.me/jdfruit)
-
-## 赞赏码(开发维护不易,请赏杯茶水费)
 
 ## 特别感谢(排名不分先后)：
 
