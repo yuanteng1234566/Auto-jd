@@ -885,7 +885,7 @@ let utils = {
         var data = {}
         data = {
             tm: [],
-            tnm: [],
+            tnm: ["d5-15,C5,5JD,a,t","d7-15,C5,5LJ,a,t"],
             grn: $.joyytoken_count,
             ss: TouchSession,
             wed: 'ttttt',
