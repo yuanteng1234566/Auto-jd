@@ -40,7 +40,7 @@ inputs:
           name: joy_moneyTree_plantBean_dreamFactory_jdfactory
           cronExpression: "0 3 0,6-23/1 * * * *"
           enable: true
-          argument: jd_moneyTree&jd_plantBean&jd_dreamFactory&jd_jdfactory&jd_joy&jd_z_health_energy
+          argument: jd_cfd&jd_moneyTree&jd_plantBean&jd_dreamFactory&jd_jdfactory&jd_joy&jd_z_health_energy
     - timer: #宠汪汪积分兑换京豆 #签到领现金 #东东小窝 #京东直播 #金榜创造营 #全民开红包
         parameters:
           name: joyreward_cash_smallhome_live
@@ -64,7 +64,7 @@ inputs:
           name: cfd_superMarket
           cronExpression: "0 30 8,12,19,6-23/6 * * * *"
           enable: true
-          argument: jd_jxmc&jd_joypark_joy&jd_cfd&jd_big_winner&jd_jxlhb&jd_superMarket
+          argument: jd_jxmc&jd_joypark_joy&jd_big_winner&jd_jxlhb&jd_superMarket&jd_opencard_Daddy
     - timer: #京豆变动通知 #疯狂的joy #京东排行榜 #领京豆额外奖励 #闪购盲盒 #京小兑 #幸运大转盘
         parameters:
           name: beanchange_crazyjoy_rankingList_beanhome_sgmh
