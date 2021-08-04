@@ -46,13 +46,13 @@ inputs:
           name: joyreward_cash_smallhome_live
           cronExpression: "0 0 0-16/8,20 * * * *"
           enable: true
-          argument: jd_joy_reward&jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket&jd_opencard_championship
+          argument: jd_opencard_cool_summer&jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket&jd_opencard_championship
     - timer: #健康社区 #旺旺开工位一次性
         parameters:
           name: healthcommunity
           cronExpression: "2 36 0,6-23/4 * * * *"
           enable: true
-          argument: jd_zjb&jd_joy&jd_kj&jd_bookshop&jd_z_health_community&jd_productZ4Brand
+          argument: jd_zjb&jd_joy&jd_kj&jd_bookshop&jd_z_health_community&jd_productZ4Brand&jd_opencard_cool_summer
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #挖现金 #推一推 #省钱大赢家之翻翻乐 
         parameters:
           name: dailyegg_superredrain_mohe
@@ -74,9 +74,9 @@ inputs:
     - timer: #金融养猪 #十元街 #京东快递 #京东赚赚 #女装盲盒  #跳跳乐瓜分京豆
         parameters:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
-          cronExpression: "58 59 0,7,15,21 * * * *"
+          cronExpression: "59 59 0,7,15 * * * *"
           enable: true
-          argument: jd_pigPet&jd_syj&jd_kd&jd_jdzz&jd_superBrand&jd_djjl&jd_ddly&jd_goodMorning&jd_summer_mom_opencard
+          argument: jd_joy_reward&jd_pigPet&jd_syj&jd_kd&jd_jdzz&jd_superBrand&jd_djjl&jd_ddly&jd_goodMorning&jd_summer_mom_opencard
         environment: #  环境变量
         variables: #  环境变量对象
       AAA: BBB # 不要删除，用来格式化对齐追加的变量的
