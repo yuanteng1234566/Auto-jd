@@ -798,6 +798,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_eat_open_opencard.js"
       }
     },
+       {
+      "name": "爸气全开",
+      "type": "cron",
+      "time": "7 1,13 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_Daddy.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
