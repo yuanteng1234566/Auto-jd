@@ -340,7 +340,7 @@
         {
             "name": "京东全民开红包",
             "type": "cron",
-            "time": "0,5-23/3 * * *",
+            "time": "31,52 0,5-23/3 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
@@ -751,7 +751,7 @@
       {
       "name": "京喜领红包",
       "type": "cron",
-      "time": "4 0,11,18 * * *",
+      "time": "37 0,5-23/3 * * *",
       "running": true,
       "job": {
         "type": "runjs",
