@@ -10,9 +10,6 @@
 第一个CK失效会退出脚本
 
 ————————————————
-若是手机用户(不是nodejs环境) 是默认直接执行脚本的
-没有适配加购变量 所有是不加购
-————————————————
 入口
 8.5-8.12 冰爽夏日 钜惠送好礼 (https://lzdz1-isv.isvjcloud.com/dingzhi/dz/openCard/activity/2611148?activityId=5a1b7bc1f22e4bc5b5686bb54749de2e&shareUuid=0d0b887f274e44558259adaa818f9dcf)
 
@@ -46,7 +43,7 @@ if ($.isNode()) {
 } else {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
-let guaopencard_addSku = false
+let guaopencard_addSku = true
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
 !(async () => {
@@ -55,10 +52,6 @@ message = ""
       "open-url": "https://bean.m.jd.com/"
     });
     return;
-  }
-  guaopencard_addSku = process.env.guaopencard_addSku5
-  if (!process.env.guaopencard_addSku5 || process.env.guaopencard_addSku5 == "false") {
-    console.log('如需加购请设置环境变量[guaopencard_addSku5]为"true"')
   }
   $.shareUuid = '0d0b887f274e44558259adaa818f9dcf'
   $.activityId = '5a1b7bc1f22e4bc5b5686bb54749de2e'
