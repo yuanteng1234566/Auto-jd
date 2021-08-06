@@ -81,8 +81,8 @@ const JD_API_HOST = 'https://api.m.jd.com/';
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       if ($.newShareCodes.length > 1) {
         console.log(`\n【抢京豆】 ${$.UserName} 去助力排名第一的cookie`);
-         let code = $.newShareCodes[(i + 1) % $.newShareCodes.length]
-         await help(code[0], code[1])
+        // let code = $.newShareCodes[(i + 1) % $.newShareCodes.length]
+         //await help(code[0], code[1])
         let code = $.newShareCodes[0];
        if(code[2] && code[2] ===  $.UserName){
           //不助力自己
