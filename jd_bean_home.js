@@ -85,7 +85,7 @@ const JD_API_HOST = 'https://api.m.jd.com/';
          await help(code[0], code[1])
         let code = $.newShareCodes[0];
        if(code[2] && code[2] ===  $.UserName){
-          不助力自己
+          //不助力自己
         } else {
           await help(code[0], code[1]);
        }
@@ -107,7 +107,7 @@ const JD_API_HOST = 'https://api.m.jd.com/';
       for (let j = 1; j < $.newShareCodes.length && $.canHelp; j++) {
         let code = $.newShareCodes[j];
         if(code[2] && code[2] ===  $.UserName){
-          不助力自己
+          //不助力自己
         } else {
           console.log(`【抢京豆】${$.UserName} 去助力账号 ${j + 1}`);
           await help(code[0], code[1]);
