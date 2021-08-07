@@ -28,8 +28,8 @@ const $ = new Env('8.4-8.15 七夕情报局🐶');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 //IOS等用户直接用NobyDa的jd cookie
-let cookiesArr = [], cookie = '';
-let qixi_addcar = false
+let cookiesArr = [],
+    cookie = '';
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -80,6 +80,7 @@ $.inviter = ['174603']
         for(let n in $.inviter){
           if($.inviter[n]){
             $.inviterFlag = 0
+            $.inviteCeil = 0
             console.log(`${$.UserName}助力${$.inviter[n]}`)
             await taskPost(`invite?inviter_id=${$.inviter[n]}&from_type=1`)
             if($.inviteCeil == 1) break
@@ -161,29 +162,30 @@ async function run() {
           for (let i = 0; i < $.shopList.data.length; i++) {
             $.oneTask = $.shopList.data[i];
             if($.oneTask.is_follow != 0 && $.oneTask.is_task != 0) continue;
-            console.log(`关注店铺 ${$.oneTask.name}`)
+            console.log(`关注店铺 ${$.oneTask.name} ${$.oneTask.is_follow} ${$.oneTask.is_task}`)
             $.resTask = ''
-            await taskPost(`follow_shop?id=${$.oneTask.id}`)
+            if($.oneTask.is_follow == 0){
+              await taskPost(`follow_shop?id=${$.oneTask.id}`)
+            }else if($.oneTask.is_task == 0){
+              await taskPost(`view_shop?id=${$.oneTask.id}`)
+            }
           }
         }
       }
-      if ($.isNode()) {
-        qixi_addcar = process.env.qixi_addcar
-        if (!process.env.qixi_addcar || process.env.qixi_addcar == "false") {
-          console.log('默认不执行加车任务，如需执行请设置环境变量[qixi_addcar]为"true"')
-        } else {
-          console.log(`浏览并加购商品(${$.taskList.task_products_num}/${$.taskList.products_num})`)
-          if ($.taskList.task_products_num < $.taskList.products_num) {
-            $.productList = ''
-            await task('get_add_product_list')
-            if ($.productList != '' && $.productList.data) {
-              for (let i = 0; i < $.productList.data.length; i++) {
-                $.oneTask = $.productList.data[i];
-                if ($.oneTask.is_add != 0 && $.oneTask.is_task != 0) continue;
-                console.log(`加购商品 ${$.oneTask.name}`)
-                $.resTask = ''
-                await taskPost(`add_product?id=${$.oneTask.id}`)
-              }
+      console.log(`浏览并加购商品(${$.taskList.task_products_num}/${$.taskList.products_num})`)
+      if($.taskList.task_products_num < $.taskList.products_num){
+        $.productList = ''
+        await task('get_add_product_list')
+        if($.productList != '' && $.productList.data){
+          for (let i = 0; i < $.productList.data.length; i++) {
+            $.oneTask = $.productList.data[i];
+            if($.oneTask.is_add != 0 && $.oneTask.is_task != 0) continue;
+            console.log(`加购商品 ${$.oneTask.name}`)
+            $.resTask = ''
+            if($.oneTask.is_add == 0){
+              await taskPost(`add_product?id=${$.oneTask.id}`)
+            }else if($.oneTask.is_task == 0){
+              await taskPost(`view_product?id=${$.oneTask.id}`)
             }
           }
         }
@@ -271,7 +273,9 @@ function taskPost(type) {
               $.inviteCeil = 2
             }
           }else if(type.indexOf('follow_shop?id') == 0 ||
+              type.indexOf('view_shop?id') == 0 ||
               type.indexOf('add_product?id') == 0 ||
+              type.indexOf('view_product?id') == 0 ||
               type.indexOf('meeting_view?id') == 0 ||
               type.indexOf('chat') == 0 ||
               type.indexOf('map_light') == 0 ||
