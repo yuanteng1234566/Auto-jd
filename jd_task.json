@@ -739,13 +739,13 @@
       }
     },
        {
-      "name": "奥运夺金挑战赛",
+      "name": "七夕情报局",
       "type": "cron",
-      "time": "45 0,11,17 * * *",
+      "time": "30 0,9,21 4-15 8 *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_productZ4Brand.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_qixi.js"
       }
     },
       {
