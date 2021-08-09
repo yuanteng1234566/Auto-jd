@@ -818,7 +818,7 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_cool_summer.js"
       }
     },
-                   {
+       {
       "name": "冰爽夏日",
       "type": "cron",
       "time": "9 0,12 * * *",
@@ -826,6 +826,26 @@
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum.js"
+      }
+    },
+       {
+      "name": "5G盲盒",
+      "type": "cron",
+      "time": "0 0,1-23/3 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_mohe.js"
+      }
+    },
+       {
+      "name": "京豆手机狂欢城",
+      "type": "cron",
+      "time": "0 0-18/6 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_carnivalcity.js"
       }
     },
       {
