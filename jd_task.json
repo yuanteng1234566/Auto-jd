@@ -699,9 +699,9 @@
       }
     },
        {
-      "name": "激扬奥运",
+      "name": "七夕会员福利社",
       "type": "cron",
-      "time": "55 0,7,13 * * *",
+      "time": "55 0,13 * * *",
       "running": true,
       "job": {
         "type": "runjs",
@@ -769,13 +769,13 @@
       }
     },
        {
-      "name": "定格夺冠",
+      "name": "来电好物季",
       "type": "cron",
-      "time": "15 0,10,17 * * *",
+      "time": "15 1,17 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_championship.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ldhwj.js"
       }
     },
          {
@@ -846,6 +846,16 @@
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_carnivalcity.js"
+      }
+    },
+       {
+      "name": "荣耀焕新季",
+      "type": "cron",
+      "time": "0 1,16 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ryhxj.js"
       }
     },
       {
