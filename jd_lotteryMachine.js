@@ -1,6 +1,6 @@
 /*
 京东抽奖机
-更新时间：2021-06-01 08:43
+更新时间：2021-08-09 14:30
 脚本说明：抽奖活动,有新活动可以@我或者提Issues
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -17,11 +17,11 @@ const $ = new Env('京东抽奖机');
 const STRSPLIT = "|";
 const needSum = false;            //是否需要显示汇总
 const printDetail = false;        //是否显示出参详情
-const appIdArr = ['1EFRRxA','1EFRQwA','1EFRYxQ','1EFRXxg','1EFVRwA','1EFVRxw','1EFRZwA','1EFRZwQ','1EFRYwA','1EFVRxg','1EFVRxQ']
-const shareCodeArr = ['T0225KkcRBgR8AbVIR_zwv8NcACjVWmIaW5kRrbA']
-const homeDataFunPrefixArr = ['interact_template','interact_template','harmony_template','','','','','','','','','','','','','','','interact_template','interact_template']
-const collectScoreFunPrefixArr = ['','','','','','','','','','','','','','','','','','interact_template','interact_template']
-const lotteryResultFunPrefixArr = ['','','','','','','','','','','','','','','','','','','interact_template','interact_template']
+const appIdArr = ['1EFRRxA','1EFRQwA','1E1NYwqc','1EFRXxg','1EFVRxg','1E1NYw6w']
+const shareCodeArr = ['T0225KkcRBgR8AbVIR_zwv8NcACjVWmIaW5kRrbA','T0225KkcRBgR8AbVIR_zwv8NcACjVXnIaW5kRrbA','T0225KkcRBgR8AbVIR_zwv8NcACTJfnqS7zDcjeQOc','T0225KkcRBgR8AbVIR_zwv8NcACjVQmoaT5kRrbA','T0225KkcRx4b8lbWJU72wvZZcwCjRXnYaU5kRrbA','T0225KkcRBgR8AbVIR_zwv8NcACTJfn6-7zDQjeQOc']
+const homeDataFunPrefixArr = ['interact_template','interact_template','harmony_template','','','','','','','','','','interact_template','interact_template']
+const collectScoreFunPrefixArr = ['','','','','','','','','','','','','interact_template','interact_template']
+const lotteryResultFunPrefixArr = ['','','','','','','','','','','','','','interact_template','interact_template']
 let merge = {}
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
@@ -140,7 +140,8 @@ function interact_template_getHomeData(timeout = 0) {
               continue
             }
             if ([14,6].includes(data.data.result.taskVos[i].taskType)) {
-              //console.log(data.data.result.taskVos[i].assistTaskDetailVo.taskToken)
+              console.log(data.data.result.taskVos[i].assistTaskDetailVo.taskToken)
+              //shareCodeArr.push(data.data.result.taskVos[i].assistTaskDetailVo.taskToken)
               if (cookiesArr.indexOf(cookie) === 0) {
                 shareCodeArr[appIdArr.indexOf(appId)] = data.data.result.taskVos[i].assistTaskDetailVo.taskToken
               }
