@@ -858,6 +858,26 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ryhxj.js"
       }
     },
+       {
+      "name": "约惠一夏",
+      "type": "cron",
+      "time": "23 0,15 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum2.js"
+      }
+    },
+       {
+      "name": "约惠一夏",
+      "type": "cron",
+      "time": "13 1,17 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_goldPhone.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
