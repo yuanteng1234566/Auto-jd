@@ -52,7 +52,7 @@ inputs:
           name: healthcommunity
           cronExpression: "2 36 0,6-23/4 * * * *"
           enable: true
-          argument: jd_zjb&jd_joy&jd_kj&jd_bookshop&jd_z_health_community&jd_qixi&jd_opencard_cool_summer
+          argument: jd_zjb&jd_joy&jd_kj&jd_bookshop&jd_z_health_community&jd_qixi&jd_opencard_cool_summer&jd_opencard_sum2
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #挖现金 #推一推 #省钱大赢家之翻翻乐 
         parameters:
           name: dailyegg_superredrain_mohe
@@ -68,9 +68,9 @@ inputs:
     - timer: #京豆变动通知 #疯狂的joy #京东排行榜 #领京豆额外奖励 #闪购盲盒 #京小兑 #幸运大转盘
         parameters:
           name: beanchange_crazyjoy_rankingList_beanhome_sgmh
-          cronExpression: "0 30 2,9 * * * *"
+          cronExpression: "0 30 1,13 * * * *"
           enable: true
-          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_olympic&jd_jxg
+          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_olympic&jd_jxg&jd_goldPhone
     - timer: #金融养猪 #十元街 #京东快递 #京东赚赚 #女装盲盒  #跳跳乐瓜分京豆
         parameters:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
