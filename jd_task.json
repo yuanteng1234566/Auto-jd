@@ -799,7 +799,7 @@
       }
     },
        {
-      "name": "爸气全开",
+      "name": "星空大冒险",
       "type": "cron",
       "time": "23 0,13 * * *",
       "running": true,
@@ -809,23 +809,13 @@
       }
     },
        {
-      "name": "冰爽一夏",
+      "name": "送豆得豆",
       "type": "cron",
-      "time": "17 0,13 * * *",
+      "time": "55 0,12 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_cool_summer.js"
-      }
-    },
-       {
-      "name": "冰爽夏日",
-      "type": "cron",
-      "time": "9 0,12 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_sendBeans.js "
       }
     },
        {
