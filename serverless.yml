@@ -22,13 +22,13 @@ inputs:
           name: beansign_clublottery_carexchange_shop
           cronExpression: "0 1 0,13 * * * *"
           enable: true
-          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_DrawEntrance&jd_opencard_eat_open_opencard&jd_ryhxj&jd_ldhwj
+          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_opencard_eat_open_opencard&jd_ryhxj&jd_ldhwj&jd_sendBeans
     - timer: #取关京东店铺商品 #京东抽奖机 #京东汽车 #京东秒秒币 #天天提鹅 #领金贴
         parameters:
           name: unsubscribe_lotteryMachine_car_ms_jintie
           cronExpression: "0 0 0 * * * *"
           enable: true
-          argument: jd_unsubscribe&jd_joy_reward&jd_lotteryMachine&jd_car&jd_ms&jd_jin_tie&jd_NewSign&jd_jxqd
+          argument: jd_unsubscribe&jd_joy_reward&jd_lotteryMachine&jd_car&jd_ms&jd_jin_tie&jd_NewSign&jd_jxqd&jd_DrawEntrance
     - timer: #东东农场 #东东萌宠 #京喜农场 #京东极速版红包 #泡泡大战 #美丽研究院
         parameters:
           name: fruit_pet_jxnc_speedsign_speedredpocke_beauty
@@ -52,13 +52,13 @@ inputs:
           name: healthcommunity
           cronExpression: "2 36 0,6-23/4 * * * *"
           enable: true
-          argument: jd_zjb&jd_joy&jd_kj&jd_bookshop&jd_z_health_community&jd_qixi&jd_opencard_cool_summer&jd_opencard_sum2
+          argument: jd_zjb&jd_joy&jd_kj&jd_bookshop&jd_z_health_community&jd_qixi&jd_opencard_sum2
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #挖现金 #推一推 #省钱大赢家之翻翻乐 
         parameters:
           name: dailyegg_superredrain_mohe
           cronExpression: "0 1,30 0,5-23/2 * * * *"
           enable: true
-          argument: jd_daily_egg&jd_jxlhb&jd_mohe&jd_super_redrain&jd_ylyn&jd_qqxing&jd_lsj&jd_tyt&jd_opencard_sum
+          argument: jd_daily_egg&jd_jxlhb&jd_mohe&jd_super_redrain&jd_ylyn&jd_qqxing&jd_lsj&jd_tyt
     - timer: #东东超市 #京喜财富岛 #京享值PK #京喜牧场
         parameters:
           name: cfd_superMarket
