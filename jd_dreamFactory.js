@@ -186,11 +186,16 @@ function getActiveId(url = 'https://wqsd.jd.com/pingou/dream_factory/index.html'
                 const start = item.start;
                 const end = item.end;
                 const link = item.link;
-                if (new Date(item.end).getTime() > Date.now()) {
+                if ((new Date(item.start).getTime() <= Date.now()) && (new Date(item.end).getTime() > Date.now())) {
                   if (link && link.match(/activeId=(.*),/) && link.match(/activeId=(.*),/)[1]) {
                     console.log(`\n团活动ID: ${link.match(/activeId=(.*),/)[1]}\n有效时间：${start} - ${end}`);
                     tuanActiveId = link.match(/activeId=(.*),/)[1];
                     break
+                  }
+                   } else if ((new Date(item.start).getTime() > Date.now()) && (new Date(item.end).getTime() > Date.now())) {
+                  if (link && link.match(/activeId=(.*),/) && link.match(/activeId=(.*),/)[1]) {
+                    console.log(`\n团活动ID: ${link.match(/activeId=(.*),/)[1]}\n有效时间：${start} - ${end}\n团ID还未开始`);
+                    tuanActiveId = '';
                   }
                 } else {
                   if (link && link.match(/activeId=(.*),/) && link.match(/activeId=(.*),/)[1]) {
