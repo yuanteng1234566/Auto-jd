@@ -699,7 +699,7 @@
       }
     },
        {
-      "name": "七夕会员福利社",
+      "name": "骁龙品牌日",
       "type": "cron",
       "time": "55 0,13 * * *",
       "running": true,
