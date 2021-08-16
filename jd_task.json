@@ -286,16 +286,6 @@
                 "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ms.js"
             }
         },
-        {
-            "name": "点点券",
-            "type": "cron",
-            "time": "23 0,20 * * *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_necklace.js"
-            }
-        },
 
         {
             "name": "东东萌宠",
