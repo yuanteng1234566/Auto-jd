@@ -768,25 +768,6 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ldhwj.js"
       }
     },
-         {
-      "name": "激情奔跑",
-      "type": "cron",
-      "time": "25 0,6,10 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_olympic_run.js"
-      }
-    },
-         {
-      "name": "食力全开",
-      "type": "cron",
-      "time": "11 0,11 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_eat_open_opencard.js"
-      }
     },
        {
       "name": "星空大冒险",
