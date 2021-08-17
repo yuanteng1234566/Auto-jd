@@ -769,16 +769,6 @@
       }
     },
        {
-      "name": "送豆得豆",
-      "type": "cron",
-      "time": "55 0,12 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_sendBeans.js "
-      }
-    },
-       {
       "name": "5G盲盒",
       "type": "cron",
       "time": "0 0,1-23/3 * * *",
