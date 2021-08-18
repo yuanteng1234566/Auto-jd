@@ -799,13 +799,33 @@
       }
     },
        {
-      "name": "约惠一夏",
+      "name": "玩撞一夏",
       "type": "cron",
       "time": "23 0,15 * * *",
       "running": true,
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum2.js"
+      }
+    },
+       {
+      "name": "一促即发",
+      "type": "cron",
+      "time": "23 1,18 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard2.js"
+      }
+    },
+       {
+      "name": "大牌狂欢趴",
+      "type": "cron",
+      "time": "43 1,18 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard.js"
       }
     },
        {
