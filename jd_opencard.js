@@ -15,7 +15,7 @@
 
 ================Loon==============
 [Script]
-cron "30 9,21 18-26 8 *" script-path=https://raw.githubusercontent.com/smiek2221/scripts/master/gua_opencard13.js,tag=8.18-8.26 全民发一发 大牌狂欢趴
+cron "30 9,21 18-26 8 *" script-path=https://raw.githubusercontent.com/smiek2221/scripts/master/gua_opencard13.js,tag=8.18-8.26 全民发一发 大牌狂欢趴 
 
 ===============Surge=================
 8.18-8.26 全民发一发 大牌狂欢趴 = type=cron,cronexp="30 9,21 18-26 8 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/smiek2221/scripts/master/gua_opencard13.js
