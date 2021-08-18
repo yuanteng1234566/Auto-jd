@@ -838,6 +838,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_goldPhone.js"
       }
     },
+       {
+      "name": "工业品抽奖机",
+      "type": "cron",
+      "time": "10 1 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_industryLottery.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
