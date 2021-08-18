@@ -62,12 +62,17 @@ $.appId = 10028;
   await requestAlgo();
   await $.wait(1000)
   let res = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/cfd.json')
-  if (!res) {
-    $.http.get({url: 'https://purge.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/cfd.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
+   if (!res) {
+      $.http.get({url: 'https://purge.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/cfd.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
+     await $.wait(1000)
+     res = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/cfd.json')
+   }
+  let res2 = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/cfd.json')
+  if (!res2) {
     await $.wait(1000)
-    res = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/cfd.json')
+    res2 = await getAuthorShareCode('https://raw.fastgit.org/asd920/updateTeam/main/shareCodes/cfd.json')
   }
-  $.strMyShareIds = [...(res && res.shareId || [])]
+  $.strMyShareIds = [...(res && res.shareId || []), ...(res2 || [])]
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -669,7 +674,7 @@ async function getTakeAggrPage(type) {
 }
 function rewardSign(body, dwEnv = 7) {
   return new Promise((resolve) => {
-     $.get(taskUrl(`story/RewardSign`, body, dwEnv), (err, resp, data) => {
+    $.get(taskUrl(`story/RewardSign`, body, dwEnv), (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -1557,7 +1562,7 @@ function taskListUrl(function_path, body = '', bizCode = 'jxbfd') {
 }
 
 function randomString(e) {
- e = e || 32;
+  e = e || 32;
   let t = "0123456789abcdef", a = t.length, n = "";
   for (let i = 0; i < e; i++)
     n += t.charAt(Math.floor(Math.random() * a));
