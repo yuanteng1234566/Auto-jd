@@ -1,7 +1,7 @@
 ###有条（科学）件（上网）的可以加入TG群防止失联，交流 TG群：https://t.me/asd920_Autojd
 
 ## 使用教程（不要fork！觉得有用的可以点个star :blush:）
-* > 【青龙】拉取仓库命令：`ql repo https://github.com/asd920/Auto-jd.git "jd\_|jx\_"  "backUp" "^(jd|JD|JS)\[^\_]|USER|sendNotify|sign_graphics_validate""`
+* > 【青龙】拉取仓库命令：`ql repo https://github.com/asd920/Auto-jd.git "jd_|jx_"  "backUp" "^(jd|JD|JS)\[^_]|USER|sendNotify|sign_graphics_validate""`
 * > 腾讯云函数部署【推荐】。[点此查看](./backUp/tencentscf.md)
 * > [elecV2P](https://github.com/elecV2/elecV2P) 部署【备用】。[点此查看](./backUp/elecV2P.md)
     * 安装教程：[点此查看](https://github.com/elecV2/elecV2P-dei/blob/master/docs/01-overview.md)  
