@@ -838,6 +838,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_goldPhone.js"
       }
     },
+       {
+      "name": "联合开卡",
+      "type": "cron",
+      "time": "37 1,17 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard3.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
