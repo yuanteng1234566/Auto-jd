@@ -22,13 +22,13 @@ inputs:
           name: beansign_clublottery_carexchange_shop
           cronExpression: "0 1 0,13 * * * *"
           enable: true
-          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_ryhxj&jd_ldhwj&jd_opencard2&jd_hwsx&jd_sign_graphics
+          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_ryhxj&jd_ldhwj&jd_opencard2&jd_hwsx
     - timer: #取关京东店铺商品 #京东抽奖机 #京东汽车 #京东秒秒币 #天天提鹅 #领金贴
         parameters:
           name: unsubscribe_lotteryMachine_car_ms_jintie
           cronExpression: "0 0 0 * * * *"
           enable: true
-          argument: jd_unsubscribe&jd_joy_reward&jd_lotteryMachine&jd_car&jd_ms&jd_jin_tie&jd_NewSign&jd_jxqd&jd_DrawEntrance
+          argument: jd_unsubscribe&jd_lotteryMachine&jd_car&jd_ms&jd_jin_tie&jd_sign_graphics&jd_jxqd&jd_DrawEntrance
     - timer: #东东农场 #东东萌宠 #京喜农场 #京东极速版红包 #泡泡大战 #美丽研究院
         parameters:
           name: fruit_pet_jxnc_speedsign_speedredpocke_beauty
