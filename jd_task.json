@@ -789,16 +789,6 @@
       }
     },
        {
-      "name": "荣耀焕新季",
-      "type": "cron",
-      "time": "0 1,16 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ryhxj.js"
-      }
-    },
-       {
       "name": "玩撞一夏",
       "type": "cron",
       "time": "23 0,15 * * *",
