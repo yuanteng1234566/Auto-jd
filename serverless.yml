@@ -22,7 +22,7 @@ inputs:
           name: beansign_clublottery_carexchange_shop
           cronExpression: "0 1 0,13 * * * *"
           enable: true
-          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_ldhwj&jd_opencard2&jd_hwsx&jd_opencard3
+          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_ldhwj&jd_opencard2&jd_hwsx&jd_opencard3&jd_ccSign
     - timer: #取关京东店铺商品 #京东抽奖机 #京东汽车 #京东秒秒币 #天天提鹅 #领金贴
         parameters:
           name: unsubscribe_lotteryMachine_car_ms_jintie
@@ -76,7 +76,7 @@ inputs:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
           cronExpression: "59 59 0,7,15 * * * *"
           enable: true
-          argument: jd_joy_reward&jd_pigPet&jd_syj&jd_nzmh&jd_jdzz&jd_superBrand&jd_djjl&jd_ddly&jd_goodMorning&jd_summer_mom_opencard
+          argument: jd_joy_reward&jd_pigPet&jd_syj&jd_nzmh&jd_jdzz&jd_superBrand&jd_djjl&jd_ddly&jd_goodMorning
         environment: #  环境变量
         variables: #  环境变量对象
       AAA: BBB # 不要删除，用来格式化对齐追加的变量的
