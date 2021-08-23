@@ -739,13 +739,13 @@
       }
     },
         {
-      "name": "母音甄选",
+      "name": "领券中心签到",
       "type": "cron",
-      "time": "35 0,9,15 * * *",
+      "time": "35 0,15 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_summer_mom_opencard.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ccSign.js"
       }
     },
        {
