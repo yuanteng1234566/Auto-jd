@@ -66,7 +66,7 @@ if ($.isNode()) {
     console.log(`获取活动ID失败`);
     return;
   }
-  let openCount = 1;
+  let openCount = Math.floor((Number(cookiesArr.length)-1)/Number($.completeNumbers));
   console.log(`\n共有${cookiesArr.length}个账号，前${openCount}个账号可以开团\n`);
   $.openTuanList = [];
   console.log(`前${openCount}个账号开始开团\n`);
@@ -524,7 +524,7 @@ async function getActivityDetail() {
   })
 }
 
-function getAuthorShareCode() {
+function getShareCode() {
     return new Promise(resolve => {
         $.get({
             url: "https://ghproxy.com/https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/sddd.json",
