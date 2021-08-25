@@ -508,17 +508,6 @@
             }
         },
         {
-            "name": "京东超级盒子",
-            "type": "cron",
-            "time": "20 9,20 * 5,6 *",
-            "running": true,
-            "job": {
-                "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_adolf_superbox.js"
-            }
-        },
-
-        {
             "name": "金榜创造营",
             "type": "cron",
             "time": "25 6,22 * * *",
