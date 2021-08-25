@@ -838,6 +838,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard3.js"
       }
     },
+       {
+      "name": "送豆得豆",
+      "type": "cron",
+      "time": "35 0,9 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
