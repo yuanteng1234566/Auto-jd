@@ -22,7 +22,7 @@ inputs:
           name: beansign_clublottery_carexchange_shop
           cronExpression: "0 1 0,13 * * * *"
           enable: true
-          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_ldhwj&jd_opencard2&jd_hwsx&jd_opencard3&jd_ccSign
+          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wxFans&jd_ldhwj&jd_hwsx&jd_opencard3&jd_ccSign
     - timer: #取关京东店铺商品 #京东抽奖机 #京东汽车 #京东秒秒币 #天天提鹅 #领金贴
         parameters:
           name: unsubscribe_lotteryMachine_car_ms_jintie
@@ -70,7 +70,7 @@ inputs:
           name: beanchange_crazyjoy_rankingList_beanhome_sgmh
           cronExpression: "0 30 1,13 * * * *"
           enable: true
-          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_olympic&jd_jxg&jd_goldPhone
+          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_jxg&jd_goldPhone
     - timer: #金融养猪 #十元街 #京东快递 #京东赚赚 #女装盲盒  #跳跳乐瓜分京豆
         parameters:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
