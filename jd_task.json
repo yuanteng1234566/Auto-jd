@@ -678,16 +678,6 @@
       }
     },
        {
-      "name": "骁龙品牌日",
-      "type": "cron",
-      "time": "55 0,13 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_olympic.js"
-      }
-    },
-       {
       "name": "特物z",
       "type": "cron",
       "time": "cron 23 8,9 * * *",
@@ -785,16 +775,6 @@
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum2.js"
-      }
-    },
-       {
-      "name": "一促即发",
-      "type": "cron",
-      "time": "23 1,18 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard2.js"
       }
     },
        {
