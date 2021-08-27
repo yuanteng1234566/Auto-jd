@@ -728,16 +728,6 @@
       }
     },
        {
-      "name": "来电好物季",
-      "type": "cron",
-      "time": "15 1,17 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ldhwj.js"
-      }
-    },
-       {
       "name": "星空大冒险",
       "type": "cron",
       "time": "23 0,13 * * *",
@@ -758,16 +748,6 @@
       }
     },
        {
-      "name": "京豆手机狂欢城",
-      "type": "cron",
-      "time": "0 0-18/6 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_carnivalcity.js"
-      }
-    },
-       {
       "name": "玩撞一夏",
       "type": "cron",
       "time": "23 0,15 * * *",
@@ -775,16 +755,6 @@
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum2.js"
-      }
-    },
-       {
-      "name": "大牌狂欢趴",
-      "type": "cron",
-      "time": "43 1,18 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard.js"
       }
     },
        {
