@@ -17,7 +17,7 @@ const $ = new Env('京东抽奖机');
 const STRSPLIT = "|";
 const needSum = false;            //是否需要显示汇总
 const printDetail = false;        //是否显示出参详情
-const appIdArr = ['1EFRRxA','1EFRQwA','1E1NYwqc','1EFRXxg','1EFVRxg','1E1NYw6w']
+const appIdArr = ['1EFRRxA','1EFRQwA','1EFRXxg','1EFVRxg','1E1xVyqw']
 const shareCodeArr = ['T0225KkcRBgR8AbVIR_zwv8NcACjVWmIaW5kRrbA','T0225KkcRBgR8AbVIR_zwv8NcACjVXnIaW5kRrbA','T0225KkcRBgR8AbVIR_zwv8NcACTJfnqS7zDcjeQOc','T0225KkcRBgR8AbVIR_zwv8NcACjVQmoaT5kRrbA','T0225KkcRx4b8lbWJU72wvZZcwCjRXnYaU5kRrbA','T0225KkcRBgR8AbVIR_zwv8NcACTJfn6-7zDQjeQOc']
 const homeDataFunPrefixArr = ['interact_template','interact_template','harmony_template','','','','','','','','','','interact_template','interact_template']
 const collectScoreFunPrefixArr = ['','','','','','','','','','','','','interact_template','interact_template']
@@ -133,7 +133,7 @@ function interact_template_getHomeData(timeout = 0) {
               await interact_template_getLotteryResult(data.data.result.taskVos[i].taskId);
               continue;
             }
-            if ([0,13].includes(data.data.result.taskVos[i].taskType)) {
+            if ([0,13,12].includes(data.data.result.taskVos[i].taskType)) {
               if (data.data.result.taskVos[i].status === 1) {
                 await harmony_collectScore(data.data.result.taskVos[i].simpleRecordInfoVo.taskToken,data.data.result.taskVos[i].taskId);
               }
