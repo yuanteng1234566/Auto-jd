@@ -25,6 +25,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
+let isLoginInfo = {}
 $.redPacketId = [];
 
 if ($.isNode()) {
@@ -57,6 +58,7 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
       $.isLogin = true;
       $.nickName = '';
       await TotalBean();
+      isLoginInfo[$.UserName] = $.isLogin
       console.log(`\n****开始【京东账号${$.index}】${$.nickName || $.UserName}****\n`);
       if (!$.isLogin) {
         $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -77,6 +79,7 @@ const JD_API_HOST = 'https://api.m.jd.com/api';
     $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     $.canHelp = true;
     $.redPacketId = [...new Set($.redPacketId)];
+    if (!isLoginInfo[$.UserName]) continue
     if (cookiesArr && cookiesArr.length >= 2) {
       console.log(`\n\n自己账号内部互助`);
       for (let item of $.redPacketId) {
