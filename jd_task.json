@@ -787,6 +787,16 @@
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_superBrand.js"
       }
     },
+       {
+      "name": "积分换话费",
+      "type": "cron",
+      "time": "35 1,16 * * *",
+      "running": true,
+      "job": {
+        "type": "runjs",
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_dwapp.js"
+      }
+    },
       {
       "name": "早起福利",
       "type": "cron",
