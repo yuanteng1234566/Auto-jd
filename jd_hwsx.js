@@ -13,8 +13,8 @@ let message = '', allMessage = '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-let appIdArr = ['1E1NXxq0', '1E1xVyqw'];
-let appNameArr = ['众筹许愿池', '开学充电站'];
+let appIdArr = ['1E1NXxq0'];
+let appNameArr = ['众筹许愿池'];
 let appId, appName;
 $.shareCode = [];
 if ($.isNode()) {
