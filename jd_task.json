@@ -728,16 +728,6 @@
       }
     },
        {
-      "name": "星空大冒险",
-      "type": "cron",
-      "time": "23 0,13 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_Daddy.js"
-      }
-    },
-       {
       "name": "5G盲盒",
       "type": "cron",
       "time": "0 0,1-23/3 * * *",
@@ -745,36 +735,6 @@
       "job": {
         "type": "runjs",
         "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_mohe.js"
-      }
-    },
-       {
-      "name": "玩撞一夏",
-      "type": "cron",
-      "time": "23 0,15 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard_sum2.js"
-      }
-    },
-       {
-      "name": "金机奖投票",
-      "type": "cron",
-      "time": "13 1,17 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_goldPhone.js"
-      }
-    },
-       {
-      "name": "联合开卡",
-      "type": "cron",
-      "time": "37 1,17 * * *",
-      "running": true,
-      "job": {
-        "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_opencard3.js"
       }
     },
        {
