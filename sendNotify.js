@@ -554,27 +554,48 @@ function qywxamNotify(text, desp) {
           headers: {
             'Content-Type': 'application/json',
           },
+        };
+
+        let buf, maxByteLength = 2048;
+        if (options.json.msgtype == 'text') {
+          let txt = options.json.text.content;
+          buf = Buffer.from(txt, 'utf8');
         }
 
-        $.post(options, (err, resp, data) => {
-          try {
-            if (err) {
-              console.log('成员ID:' + ChangeUserId(desp) + '企业微信应用消息发送通知消息失败！！\n');
-              console.log(err);
-            } else {
-              data = JSON.parse(data);
-              if (data.errcode === 0) {
-                console.log('成员ID:' + ChangeUserId(desp) + '企业微信应用消息发送通知消息完成。\n');
-              } else {
-                console.log(`${data.errmsg}\n`);
-              }
+        let isRun = true, startIndex = 0;
+        while (isRun) {
+          isRun = buf && buf.length > 2048 && startIndex < buf.length;
+          if (isRun) {
+            let endIndexP1 = startIndex + maxByteLength;
+            if (buf.length < endIndexP1) {
+              endIndexP1 = buf.length;
+              isRun = false;
             }
-          } catch (e) {
-            $.logErr(e, resp);
-          } finally {
-            resolve(data);
+
+            options.json.text.content = buf.toString('utf8', startIndex, endIndexP1);
+            startIndex = endIndexP1;
           }
-        });
+
+          $.post(options, (err, resp, data) => {
+            try {
+              if (err) {
+                console.log('成员ID:' + ChangeUserId(desp) + '企业微信应用消息发送通知消息失败！！\n');
+                console.log(err);
+              } else {
+                data = JSON.parse(data);
+                if (data.errcode === 0) {
+                  console.log('成员ID:' + ChangeUserId(desp) + '企业微信应用消息发送通知消息完成。\n');
+                } else {
+                  console.log(`${data.errmsg}\n`);
+                }
+              }
+            } catch (e) {
+              $.logErr(e, resp);
+            } finally {
+              resolve(data);
+            }
+          });
+        }
       });
     } else {
       console.log('您未提供企业微信应用消息推送所需的QYWX_AM，取消企业微信应用消息推送消息通知\n');
