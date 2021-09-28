@@ -1,6 +1,6 @@
 /*
 京东京喜工厂
-更新时间：2021-4-21
+更新时间：2021-9-28
 修复做任务、收集电力出现火爆，不能完成任务，重新计算h5st验证
 参考自 ：https://www.orzlee.com/web-development/2021/03/03/lxk0301-jingdong-signin-scriptjingxi-factory-solves-the-problem-of-unable-to-signin.html
 活动入口：京东APP-游戏与互动-查看更多-京喜工厂
@@ -39,7 +39,7 @@ const helpAu = true; //帮作者助力 免费拿活动
 const notify = $.isNode() ? require('./sendNotify') : '';
 //通知级别 1=生产完毕可兑换通知;2=可兑换通知+生产超时通知+兑换超时通知;3=可兑换通知+生产超时通知+兑换超时通知+未选择商品生产通知(前提：已开通京喜工厂活动);默认第2种通知
 let notifyLevel = $.isNode() ? process.env.JXGC_NOTIFY_LEVEL || 2 : 2;
-const randomCount = $.isNode() ? 20 : 0;
+const randomCount = $.isNode() ? 0 : 0;
 let tuanActiveId = ``, hasSend = false;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '';
@@ -148,17 +148,6 @@ async function jdDreamFactory() {
     }
     await exchangeProNotify();
     await showMsg();
-    if (helpAu === true) {
-      await helpAuthor();
-      $.packetIdArr = [
-        'f5d0e428bc4a40dc8984db2cd4c2b54a',
-        'f08c120405284e72a924a2b2bdbd26ae'
-      ]
-
-      for (let code of $.packetIdArr) {
-        await dismantleRedEnvelope(code);
-      }
-    }
   } catch (e) {
     $.logErr(e)
   }
@@ -1381,7 +1370,7 @@ async function showMsg() {
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: `http://jd.turinglabs.net/api/v2/jd/jxfactory/read/${randomCount}/`, 'timeout': 10000}, (err, resp, data) => {
+      $.get({url: `https://api.jdsharecode.xyz/api/jxfactory/${randomCount}`, 'timeout': 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
