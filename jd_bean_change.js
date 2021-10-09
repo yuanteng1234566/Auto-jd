@@ -120,43 +120,41 @@ async function showMsg() {
   ReturnMessage+=`昨日收入：${$.incomeBean}京豆 🐶\n`;
   ReturnMessage+=`昨日支出：${$.expenseBean}京豆 🐶\n`;
   ReturnMessage+=`当前京豆：${$.beanCount}(七天将过期${$.expirejingdou})京豆🐶\n`;
-  
-  if(typeof $.JDEggcnt !== "undefined"){
-	ReturnMessage+=`京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
+
+  if (typeof $.JDEggcnt !== "undefined") {
+    ReturnMessage+=`京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
+  }
+  if (typeof $.JDtotalcash !== "undefined") {
+    ReturnMessage+=`极速金币：${$.JDtotalcash}金币(≈${$.JDtotalcash / 10000}元)\n`;
+  }
+  if (typeof $.JdzzNum !== "undefined") {
+    ReturnMessage+=`京东赚赚：${$.JdzzNum}金币(≈${$.JdzzNum / 10000}元)\n`;
+  }
+  if ($.JdMsScore!=0) {
+    ReturnMessage+=`京东秒杀：${$.JdMsScore}秒秒币(≈${$.JdMsScore / 1000}元)\n`;
   } 
-  if(typeof $.JDtotalcash !== "undefined"){
-	ReturnMessage+=`极速金币：${$.JDtotalcash}金币(≈${$.JDtotalcash / 10000}元)\n`;
+  if ($.JdFarmProdName != "") {
+    if ($.JdtreeEnergy!=0) {
+      ReturnMessage+=`东东农场：${$.JdFarmProdName},进度${(($.JdtreeEnergy / $.JdtreeTotalEnergy) * 100).toFixed(2)}%`;
+      if ($.JdwaterD!='Infinity' && $.JdwaterD!='-Infinity') {
+        ReturnMessage+=`,${$.JdwaterD === 1 ? '明天' : $.JdwaterD === 2 ? '后天' : $.JdwaterD + '天后'}可兑🍉\n`;
+      } else {
+        ReturnMessage+=`\n`;
+      }
+    } else {
+      ReturnMessage+=`东东农场：${$.JdFarmProdName}\n`;
+    }
   }
-  if(typeof $.JdzzNum !== "undefined"){
-	ReturnMessage+=`京东赚赚：${$.JdzzNum}金币(≈${$.JdzzNum / 10000}元)\n`;
-  }
-  if($.JdMsScore!=0){
-	ReturnMessage+=`京东秒杀：${$.JdMsScore}秒秒币(≈${$.JdMsScore / 1000}元)\n`;
-  } 
-  if($.JdFarmProdName != ""){
-	if($.JdtreeEnergy!=0){
-		ReturnMessage+=`东东农场：${$.JdFarmProdName},进度${(($.JdtreeEnergy / $.JdtreeTotalEnergy) * 100).toFixed(2)}%`;
-		if($.JdwaterD!='Infinity' && $.JdwaterD!='-Infinity'){
-		  ReturnMessage+=`,${$.JdwaterD === 1 ? '明天' : $.JdwaterD === 2 ? '后天' : $.JdwaterD + '天后'}可兑🍉\n`;
-		} else {
-		  ReturnMessage+=`\n`;
-		}
-	} else {
-		ReturnMessage+=`东东农场：${$.JdFarmProdName}\n`;
-	}
-  }
-  
   const response = await await PetRequest('energyCollect');
   const initPetTownRes = await PetRequest('initPetTown');
   if (initPetTownRes.code === '0' && initPetTownRes.resultCode === '0' && initPetTownRes.message === 'success') {
-      $.petInfo = initPetTownRes.result;
-	  if (response.resultCode === '0') {
-		ReturnMessage += `东东萌宠：${$.petInfo.goodsInfo.goodsName},`;
-		ReturnMessage += `勋章${response.result.medalNum}/${response.result.medalNum+response.result.needCollectMedalNum}块(${response.result.medalPercent}%)\n`;
-		//ReturnMessage += `          已有${response.result.medalNum}块勋章，还需${response.result.needCollectMedalNum}块\n`;
-
-	  }
-	}
+    $.petInfo = initPetTownRes.result;
+    if (response.resultCode === '0') {
+      ReturnMessage += `东东萌宠：${$.petInfo.goodsInfo.goodsName},`;
+      ReturnMessage += `勋章${response.result.medalNum}/${response.result.medalNum+response.result.needCollectMedalNum}块(${response.result.medalPercent}%)\n`;
+      //ReturnMessage += `          已有${response.result.medalNum}块勋章，还需${response.result.needCollectMedalNum}块\n`;
+    }
+  }
   ReturnMessage+=`${$.message}\n\n`;
   allMessage+=ReturnMessage;
   if ($.index % 10 === 0) {
@@ -433,7 +431,7 @@ function getJdZZ() {
           console.log(`${$.name} API请求失败，请检查网路重试`)
         } else {
           if (safeGet(data)) {
-            data = JSON.parse(data);		
+            data = JSON.parse(data);
             $.JdzzNum = data.data.totalNum
           }
         }
@@ -486,7 +484,6 @@ function getMs() {
   })
 }
 
-
 function taskMsPostUrl(function_id, body = {}, extra = '', function_id2) {
   let url = `${JD_API_HOST}`;
   if (function_id2) {
@@ -532,23 +529,22 @@ async function getjdfruit() {
         if (err) {
           console.log('\n东东农场: API查询请求失败 ‼️‼️');
           console.log(JSON.stringify(err));
-          $.logErr(err);
         } else {
           if (safeGet(data)) {
             $.farmInfo = JSON.parse(data)
-			if ($.farmInfo.farmUserPro) {
-				$.JdFarmProdName=$.farmInfo.farmUserPro.name;
-				$.JdtreeEnergy=$.farmInfo.farmUserPro.treeEnergy;
-				$.JdtreeTotalEnergy=$.farmInfo.farmUserPro.treeTotalEnergy;			
-				 
-				let waterEveryDayT = $.JDwaterEveryDayT;
-				let waterTotalT = ($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy - $.farmInfo.farmUserPro.totalEnergy) / 10;//一共还需浇多少次水
-				let waterD = Math.ceil(waterTotalT / waterEveryDayT);
-				
-				$.JdwaterTotalT = waterTotalT;
-				$.JdwaterD = waterD;
-			}
-		  }
+            if ($.farmInfo.farmUserPro) {
+              $.JdFarmProdName=$.farmInfo.farmUserPro.name;
+              $.JdtreeEnergy=$.farmInfo.farmUserPro.treeEnergy;
+              $.JdtreeTotalEnergy=$.farmInfo.farmUserPro.treeTotalEnergy;
+               
+              let waterEveryDayT = $.JDwaterEveryDayT;
+              let waterTotalT = ($.farmInfo.farmUserPro.treeTotalEnergy - $.farmInfo.farmUserPro.treeEnergy - $.farmInfo.farmUserPro.totalEnergy) / 10;//一共还需浇多少次水
+              let waterD = Math.ceil(waterTotalT / waterEveryDayT);
+              
+              $.JdwaterTotalT = waterTotalT;
+              $.JdwaterD = waterD;
+            }
+          }
         }
       } catch (e) {
         $.logErr(e, resp)
@@ -559,20 +555,18 @@ async function getjdfruit() {
   })
 }
 
-function jdfruitRequest(function_id, body = {}, timeout = 1000){
+function jdfruitRequest(function_id, body = {}, timeout = 1000) {
   return new Promise(resolve => {
     setTimeout(() => {
       $.get(taskfruitUrl(function_id, body), (err, resp, data) => {
         try {
           if (err) {
-            console.log('\n东东农场: API查询请求失败 ‼️‼️')
             console.log(JSON.stringify(err));
-            console.log(`function_id:${function_id}`)
-            $.logErr(err);
+            console.log('\n东东农场: API查询请求失败 ‼️‼️')
           } else {
             if (safeGet(data)) {
               data = JSON.parse(data);
-			  $.JDwaterEveryDayT = data.totalWaterTaskInit.totalWaterTaskTimes;
+              $.JDwaterEveryDayT = data.totalWaterTaskInit.totalWaterTaskTimes;
             }
           }
         } catch (e) {
@@ -585,16 +579,14 @@ function jdfruitRequest(function_id, body = {}, timeout = 1000){
   })
 }
 
-
 async function PetRequest(function_id, body = {}) {
   await $.wait(3000); 
   return new Promise((resolve, reject) => {
     $.post(taskPetUrl(function_id, body), (err, resp, data) => {
       try {
         if (err) {
-          console.log('\n东东萌宠: API查询请求失败 ‼️‼️');
           console.log(JSON.stringify(err));
-          $.logErr(err);
+          console.log('\n东东萌宠: API查询请求失败 ‼️‼️');
         } else {
           data = JSON.parse(data);
         }
@@ -676,21 +668,17 @@ async function JxmcGetRequest() {
   url = `https://m.jingxi.com/jxmc/queryservice/GetHomePageInfo?channel=7&sceneid=1001&activeid=null&activekey=null&isgift=1&isquerypicksite=1&_stk=channel%2Csceneid&_ste=1`;
   url += `&h5st=${decrypt(Date.now(), '', '', url)}&_=${Date.now() + 2}&sceneval=2&g_login_type=1&callback=jsonpCBK${String.fromCharCode(Math.floor(Math.random() * 26) + "A".charCodeAt(0))}&g_ty=ls`;
   myRequest = getGetRequest(`GetHomePageInfo`, url);
-      
-    
   return new Promise(async resolve => {
     $.get(myRequest, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`API请求失败，请检查网路重试`)
-          $.runFlag = false;
-          console.log(`请求失败`)
+          console.log(`JxmcGetRequest API请求失败，请检查网路重试`)
         } else {
           data = JSON.parse(data.match(new RegExp(/jsonpCBK.?\((.*);*/))[1]);
-		  if (data.ret === 0) {
-			$.JDEggcnt=data.data.eggcnt;	
-		  }
+          if (data.ret === 0) {
+            $.JDEggcnt=data.data.eggcnt;	
+          }
         }
       } catch (e) {
         console.log(data);
@@ -701,7 +689,6 @@ async function JxmcGetRequest() {
     })
   })
 }
-
 function randomString(e) {
   e = e || 32;
   let t = "0123456789abcdef", a = t.length, n = "";
@@ -712,7 +699,6 @@ function randomString(e) {
 
 function getGetRequest(type, url) {
   UA = `jdpingou;iPhone;4.13.0;14.4.2;${randomString(40)};network/wifi;model/iPhone10,2;appBuild/100609;ADID/00000000-0000-0000-0000-000000000000;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148`
-    
   const method = `GET`;
   let headers = {
     'Origin': `https://st.jingxi.com`,
@@ -727,7 +713,6 @@ function getGetRequest(type, url) {
   };
   return {url: url, method: method, headers: headers};
 }
-
 
 Date.prototype.Format = function (fmt) {
   var e,

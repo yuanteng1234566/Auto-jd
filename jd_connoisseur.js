@@ -43,7 +43,7 @@ let allMessage = '';
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
-  let res = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/connoisseur.json')
+   let res = await getAuthorShareCode('https://raw.githubusercontent.com/asd920/updateTeam/main/shareCodes/connoisseur.json')
   if (!res) {
     $.http.get({url: 'https://purge.jsdelivr.net/gh/asd920/updateTeam@main/shareCodes/connoisseur.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
     await $.wait(1000)
@@ -146,11 +146,11 @@ async function getActiveInfo(url = 'https://prodev.m.jd.com/mall/active/2y1S9xVY
                 console.log(`去做【${vo.boardParams.btnText}】`)
                 await getTaskInfo("5", vo.boardParams.projectCode, vo.boardParams.taskCode)
                 await $.wait(2000)
-              } else if (vo.boardParams && vo.boardParams.taskCode === "XTXNrKoUP5QK1LSU8LbTJpFwtbj") {
+              } else if (vo.boardParams && (vo.boardParams.taskCode === "XTXNrKoUP5QK1LSU8LbTJpFwtbj" || vo.boardParams.taskCode === "2bpKT3LMaEjaGyVQRr2dR8zzc9UU")) {
                 console.log(`去做【${vo.boardParams.titleText}】`)
                 await getTaskInfo("9", vo.boardParams.projectCode, vo.boardParams.taskCode)
                 await $.wait(2000)
-              } else if (vo.boardParams && (vo.boardParams.taskCode === "3dw9N5yB18RaN9T1p5dKHLrWrsX" || vo.boardParams.taskCode === "Hys8nCmAaqKmv1G3Y3a5LJEk36Y" || vo.boardParams.taskCode === "CtXTxzkh4ExFCrGf8si3ePxGnPy")) {
+              } else if (vo.boardParams && (vo.boardParams.taskCode === "3dw9N5yB18RaN9T1p5dKHLrWrsX" || vo.boardParams.taskCode === "CtXTxzkh4ExFCrGf8si3ePxGnPy")) {
                 await getTaskInfo("1", vo.boardParams.projectCode, vo.boardParams.taskCode)
                 await $.wait(2000)
               }
@@ -180,20 +180,24 @@ async function getTaskInfo(type, projectId, assignmentId, helpType = '1', itemId
             if ((assignmentId === "2PbAu1BAT79RxrM5V7c2VAPUQDSd" || assignmentId === "3dw9N5yB18RaN9T1p5dKHLrWrsX" || assignmentId === "2gWnJADG8JXMpp1WXiNHgSy4xUSv" || assignmentId === "CtXTxzkh4ExFCrGf8si3ePxGnPy" || assignmentId === "26KhtkXmoaj6f37bE43W5kF8a9EL" || assignmentId === "bWE8RTJm5XnooFr4wwdDM5EYcKP") && !body['helpType']) {
               if (assignmentId !== "2PbAu1BAT79RxrM5V7c2VAPUQDSd") console.log(`去做【${data.data[0].title}】`)
               if (data.code === "0" && data.data) {
-                if (data.data[0].status !== "2") {
-                  await interactive_done(type, data.data[0].projectId, data.data[0].assignmentId, data.data[0].itemId)
-                  await $.wait(data.data[0].waitDuration || 2000)
+                if (data.data[0]) {
+                  if (data.data[0].status !== "2") {
+                    await interactive_done(type, data.data[0].projectId, data.data[0].assignmentId, data.data[0].itemId)
+                    await $.wait((data.data[0].waitDuration * 1000) || 2000)
+                  } else {
+                    console.log(assignmentId === "2PbAu1BAT79RxrM5V7c2VAPUQDSd" ? `今日已签到` : `任务已完成`)
+                  }
                 } else {
-                  console.log(assignmentId === "2PbAu1BAT79RxrM5V7c2VAPUQDSd" ? `今日已签到` : `任务已完成`)
+                  console.log(`无当前任务`)
                 }
               } else {
                 console.log(data.message)
               }
-            } else if (assignmentId === "XTXNrKoUP5QK1LSU8LbTJpFwtbj" && !body['helpType']) {
+            } else if ((assignmentId === "XTXNrKoUP5QK1LSU8LbTJpFwtbj" || assignmentId === "2bpKT3LMaEjaGyVQRr2dR8zzc9UU") && !body['helpType']) {
               if (data.code === "0" && data.data) {
                 if (data.data[0].status !== "2") {
                   await sign_interactive_done(type, data.data[0].projectId, data.data[0].assignmentId)
-                  await $.wait(2000)
+                  await $.wait((data.data[0].waitDuration * 1000) || 2000)
                   await interactive_reward(type, data.data[0].projectId, data.data[0].assignmentId)
                 } else {
                   console.log(`任务已完成`)
@@ -206,7 +210,7 @@ async function getTaskInfo(type, projectId, assignmentId, helpType = '1', itemId
                 console.log(`去做【${data.data[0].title}】`)
                 if (data.data[0].status !== "2") {
                   await interactive_accept(type, data.data[0].projectId, data.data[0].assignmentId, data.data[0].itemId)
-                  await $.wait(data.data[0].waitDuration)
+                  await $.wait((data.data[0].waitDuration * 1000) || 2000)
                   await qryViewkitCallbackResult(data.data[0].projectId, data.data[0].assignmentId, data.data[0].itemId)
                 } else {
                   console.log(`任务已完成`)
@@ -270,14 +274,14 @@ function interactive_done(type, projectId, assignmentId, itemId) {
           if (data) {
             data = JSON.parse(data)
             if (type === "2") {
-              if (data.code === "0") {
+              if (data.code === "0" && data.busiCode === "0") {
                 console.log(data.data.msg)
                 if (!data.data.success) $.canHelp = false
               } else {
                 console.log(data.message)
               }
             } else {
-              if (data.code === "0") {
+              if (data.code === "0" && data.busiCode === "0") {
                 console.log(data.data.rewardMsg)
               } else {
                 console.log(data.message)
@@ -328,7 +332,7 @@ function interactive_reward(type, projectId, assignmentId) {
         } else {
           if (data) {
             data = JSON.parse(data)
-            if (data.code === "0") {
+            if (data.code === "0" && data.busiCode === "0") {
               console.log(data.data.rewardMsg)
             } else {
               console.log(data.message)
@@ -378,7 +382,9 @@ async function qryViewkitCallbackResult(encryptProjectId, encryptAssignmentId, i
         } else {
           if (data) {
             data = JSON.parse(data)
-            console.log(`恭喜获得2个京豆`)
+            if (data.code === "0" || data.msg === "query success!") {
+              console.log(`恭喜获得2个京豆`)
+            }
           }
         }
       } catch (e) {
@@ -417,7 +423,7 @@ async function getshareCode() {
             data = JSON.parse(data)
             for (let key of Object.keys(data.floorList)) {
               let vo = data.floorList[key]
-              if (vo.boardParams && (vo.boardParams.taskCode === "2gWnJADG8JXMpp1WXiNHgSy4xUSv" || vo.boardParams.taskCode === "26KhtkXmoaj6f37bE43W5kF8a9EL" || vo.boardParams.taskCode === "bWE8RTJm5XnooFr4wwdDM5EYcKP")) {
+              if (vo.boardParams && (vo.boardParams.taskCode === "2gWnJADG8JXMpp1WXiNHgSy4xUSv" || vo.boardParams.taskCode === "26KhtkXmoaj6f37bE43W5kF8a9EL" || vo.boardParams.taskCode === "bWE8RTJm5XnooFr4wwdDM5EYcKP" || vo.boardParams.taskCode === "Hys8nCmAaqKmv1G3Y3a5LJEk36Y")) {
                 await getTaskInfo("1", vo.boardParams.projectCode, vo.boardParams.taskCode)
                 await $.wait(2000)
               } else if (vo.boardParams && vo.boardParams.taskCode === "3PX8SPeYoQMgo1aJBZYVkeC7QzD3") {
