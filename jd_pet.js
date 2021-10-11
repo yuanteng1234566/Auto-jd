@@ -25,21 +25,21 @@ cron "15 6-18/6 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/mast
 
 */
 const $ = new Env('东东萌宠');
-let cookiesArr = [], cookie = '', jdPetShareArr = [], isBox = false, notify, newShareCodes, allMessage = '';
+let cookiesArr = [], cookie = '', jdPetShareArr = [], isBox = false, notify,newShareCodes = [], allMessage = '';
 //助力好友分享码(最多5个,否则后面的助力失败),原因:京东农场每人每天只有四次助力机会
 //此此内容是IOS用户下载脚本到本地使用，填写互助码的地方，同一京东账号的好友互助码请使用@符号隔开。
 //下面给出两个账号的填写示例（iOS只支持2个京东账号）
 let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好友的shareCode
    //账号一的好友shareCode,不同好友的shareCode中间用@符号隔开
-  'MTAxODcxOTI2NTAwMDAwMDAxMDk2NTk2OQ==@MTAxODc2NTEzNTAwMDAwMDAwMjg3MDg2MA==',
+  'MTAxODcxOTI2NTAwMDAwMDAxMDk2NTk2OQ==@MTEyOTEzNzMzMDAwMDAwMDUwMjEyNjA3@MTAxODc2NTEzNTAwMDAwMDAyMDUxNjkzMw==',
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
-  'MTAxODcxOTI2NTAwMDAwMDAxMDk2NTk2OQ==@MTAxODc2NTEzNTAwMDAwMDAwMjg3MDg2MA==',
+  'MTAxODcxOTI2NTAwMDAwMDAxMDk2NTk2OQ==@MTEyOTEzNzMzMDAwMDAwMDUwMjEyNjA3@MTAxODc2NTEzNTAwMDAwMDAyMDUxNjkzMw==',
 ]
 let message = '', subTitle = '', option = {};
 let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 let goodsUrl = '', taskInfoKey = [];
-let randomCount = $.isNode() ? 0 : 5;
+let randomCount = $.isNode() ? 0 : 0;
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
@@ -450,29 +450,29 @@ async function showMsg() {
     $.log(`\n${message}\n`);
   }
 }
-function readShareCode() {
-  return new Promise(async resolve => {
-    $.get({url: `http://share.turinglabs.net/api/v3/pet/query/${randomCount}/`, 'timeout': 10000}, (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API请求失败，请检查网路重试`)
-        } else {
-          if (data) {
-            console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
-            data = JSON.parse(data);
-          }
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve(data);
-      }
-    })
-    await $.wait(10000);
-    resolve()
-  })
-}
+//function readShareCode() {
+//  return new Promise(async resolve => {
+  //  $.get({url: `http://share.turinglabs.net/api/v3/pet/query/${randomCount}/`, 'timeout': 10000}, (err, resp, data) => {
+    //  try {
+    //    if (err) {
+    //      console.log(`${JSON.stringify(err)}`)
+    //      console.log(`${$.name} API请求失败，请检查网路重试`)
+    //    } else {
+    //      if (data) {
+    //        console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
+    //        data = JSON.parse(data);
+     //     }
+     //   }
+   //   } catch (e) {
+     //   $.logErr(e, resp)
+   //   } finally {
+   //     resolve(data);
+   //   }
+   // })
+   // await $.wait(10000);
+   // resolve()
+ // })
+//}
 function shareCodesFormat() {
   return new Promise(async resolve => {
     // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
@@ -484,12 +484,12 @@ function shareCodesFormat() {
       const tempIndex = $.index > shareCodes.length ? (shareCodes.length - 1) : ($.index - 1);
       newShareCodes = shareCodes[tempIndex].split('@');
     }
-    //因好友助力功能下线。故暂时屏蔽
-    const readShareCodeRes = await readShareCode();
+    //好友助力功能下线。故暂时屏蔽
+  //  const readShareCodeRes = await readShareCode();
     //const readShareCodeRes = null;
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
+ //   if (readShareCodeRes && readShareCodeRes.code === 200) {
+   //   newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
+  //  }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
     resolve();
   })
