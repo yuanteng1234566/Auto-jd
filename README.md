@@ -3,5 +3,21 @@
 
 【青龙】拉取仓库命令
 ```
-ql repo https://github.com/asd920/Auto-jd.git "jd_|jx_|getJDCookie" "backUp" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign"
+ql repo https://github.com/asd920/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign"
 ```
+* > 上面命令拉取错误的使用这个：`ql repo https://ghproxy.com/https://github.com/asd920/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign"`
+
+* > 腾讯云函数部署建议阅读@hshx123大佬的[教程](https://66ccff.work/teach/jd.html)【推荐】.[旧教程](./backUp/tencentscf.md)【备用】
+
+* > [elecV2P](https://github.com/elecV2/elecV2P) 部署【随缘维护，建议转战➟[Docker](https://www.runoob.com/docker/windows-docker-install.html) [青龙](https://github.com/whyour/qinglong)】
+    * 安装教程：[点此查看](https://github.com/elecV2/elecV2P-dei/blob/master/docs/01-overview.md)  
+    * 订阅任务：`https://ghproxy.com/https://raw.githubusercontent.com/asd920/Auto-jd/main/jd_task.json`
+    * elecV2P京东CK、通知填写格式等相关补充说明：[点此查看](./backUp/elecV2P.md)  
+
+## 自动同步本仓库脚本教程：[点此查看](https://github.com/asd920/Auto-jd/blob/main/backUp/reposync.md)  
+
+- 获取京东cookie教程可参考：
+  
+  + [浏览器获取京东cookie教程](./backUp/GetJdCookie.md)
+    
+  + [插件获取京东cookie教程](./backUp/GetJdCookie2.md)
