@@ -528,13 +528,13 @@
             }
         },
         {
-            "name": "砍价",
+            "name": "攒金币赢大礼",
             "type": "cron",
-            "time": "12 0,6-23/1 * * *",
+            "time": "22 0,8 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_kj.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_GoldcoinToGift.js"
             }
         },
         {
@@ -618,13 +618,13 @@
             }
         },
          {
-            "name": "伊利养牛",
+            "name": "魔方",
             "type": "cron",
-            "time": "0 12 * * *",
+            "time": "18 7,17 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ylyn.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_mf.js"
             }
         },
     {
@@ -648,13 +648,13 @@
       }
     },
       {
-      "name": "粉丝互动",
+      "name": "内容鉴赏官",
       "type": "cron",
-      "time": "15 8 * * *",
+      "time": "15 0,21 * 9 *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_wxFans.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_connoisseur.js"
       }
     },
       {
@@ -668,13 +668,13 @@
       }
     },
        {
-      "name": "发财大赢家",
+      "name": "城城分现金",
       "type": "cron",
-      "time": "30 8-23 * * *",
+      "time": "0 0-23/5 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_big_winner.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_city.js"
       }
     },
        {
