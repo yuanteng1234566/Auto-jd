@@ -39,7 +39,7 @@ if ($.isNode()) {
   cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const author_codes = ['RtGKzOqsRFihf4adQdw00mw4n9V5-cO_c08SuhyE2Ajp5a8xfw','X928lrv7HVb_Ms_WF5h_moKEgETeUK4UK75GmxlB','RtGKzL_2FAzyd9aTHtcwg_8zo1GvwxpMBzY0_en5ebViuICqvQ','RtGKzO_wRFmmfdWZE4Yy0AZdrWj8kDfHZTwzILWJrgv1HAWhwA'].sort(() => 0.5 - Math.random())
+const author_codes = ['RtGKzOqsRFihf4adQdw00mw4n9V5-cO_c08SuhyE2Ajp5a8xfw','X928lrv7HVb_Ms_WF5h_moKEgETeUK4UK75GmxlB'].sort(() => 0.5 - Math.random())
 const self_code = []
 let pool = []
 !(async () => {
@@ -285,11 +285,11 @@ function shareCodesFormat() {
    //   pool = readShareCodeRes.data || [];
    // }
     if ($.index - 1 == 0) {
-      console.log('首个帐号,助力作者和池子')
-      $.newShareCodes = [...new Set([...author_codes, ...pool])];
+      console.log('首个帐号,助力作者')
+      $.newShareCodes = [...new Set([...author_codes])];
     } else {
       console.log('非首个个帐号,优先向前助力')
-      $.newShareCodes = [...new Set([...self_code,...author_codes, ...pool])]
+      $.newShareCodes = [...new Set([...self_code,...author_codes])]
     }
     // const readShareCodeRes = await readShareCode();
     // if (readShareCodeRes && readShareCodeRes.code === 200) {
