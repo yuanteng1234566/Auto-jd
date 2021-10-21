@@ -1,7 +1,7 @@
 /*
 * 活动：APP - 京东超市 - 限时抢京豆
 * 第一个CK助力作者，其他CK助力第一个CK
-  cron 11 0,9 * * * jd_fission.js
+   cron 11 0,9 * * * jd_fission.js
 * */
 const $ = new Env('限时抢京豆');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -21,13 +21,13 @@ if ($.isNode()) {
 let ownCode = {};
 let mainPin = '';
 let codeList = [];
-let autoCode = '';
+let autoCode = '',projectId = '',helpId = '';
 !(async () => {
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
         return;
     }
-    if(Date.now() > 1634832000000){
+    if(Date.now() > 1637424000000){
         console.log(`活动结束`);
         return;
     }
@@ -37,6 +37,7 @@ let autoCode = '';
         try{res = await getAuthorShareCode('https://raw.fastgit.org/asd920/updateTeam/main/shareCodes/shop.json');}catch (e) {}
         if(!res){res = [];}
     }
+
     if(res.length > 0){
         autoCode = getRandomArrayElements(res,1)[0];
     }
@@ -48,8 +49,6 @@ let autoCode = '';
     if(JSON.stringify(ownCode) === '{}'){
         return ;
     }
-    console.log(JSON.stringify(codeList))
-    return ;
     if(cookiesArr.length>0){
         const promiseArr = cookiesArr.map((ck, index) => help(ck));
         await Promise.all(promiseArr);
@@ -73,7 +72,7 @@ async function help(ck){
             let getInfo = await takeRequest('smt_newFission_taskFlag',`&body=%7B%22taskType%22%3A%222%22%2C%22operateType%22%3A%221%22%2C%22assistId%22%3A%22${autoCode}%22%7D`,ck);
             await $.wait(1000)
             if(getInfo.assistFlag === '1'){
-                let doInfo = await takeRequest('smt_newFission_doAssignment',`&body=%7B%22projectId%22%3A%22jYRegTcZ8KBe7ZgK4xpgGjec9FX%22%2C%22assignmentId%22%3A%223RLQByzBcfWFeBXhpqGZWed2pvXT%22%2C%22itemId%22%3A%22Sv_VwQBwY91bUPRjxlfEMcg%22%2C%22type%22%3A%222%22%7D`,ck);
+                let doInfo = await takeRequest('smt_newFission_doAssignment',`&body=%7B%22projectId%22%3A%22${projectId}%22%2C%22assignmentId%22%3A%22${helpId}%22%2C%22itemId%22%3A%22${autoCode}%22%2C%22type%22%3A%222%22%7D`,ck);
                 console.log(JSON.stringify(doInfo));
             }else{
                 console.log(`已助力过或者无次数`);
@@ -100,7 +99,7 @@ async function main(ck){
     if(JSON.stringify(mainInfo) === '{}'){console.log(`${userName},初始化失败`);return;}
     console.log(`${userName},初始化成功`);
     let taskInfoList = mainInfo.taskInfoList;
-    let projectId = mainInfo.projectId;
+    projectId = mainInfo.projectId;
     let userBoxInfoVoList = mainInfo.userBoxInfoVoList;
     for (let i = 0; i < taskInfoList.length; i++) {
         let oneTask = taskInfoList[i];
@@ -118,6 +117,9 @@ async function main(ck){
             codeList.push(oneTask.assistId);
             if(JSON.stringify(ownCode) === '{}' && mainPin === userName){
                 ownCode = {'user':userName,'projectId':projectId,'assignmentId':oneTask.assignmentId,"itemId":oneTask.assistId,'type':2}
+            }
+            if(!helpId){
+                helpId = oneTask.assignmentId;
             }
         }
         if(oneTask.type === '3' || oneTask.type === '6'){
