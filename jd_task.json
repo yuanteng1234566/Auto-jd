@@ -226,13 +226,13 @@
             }
         },
         {
-            "name": "京喜农场",
+            "name": "预售福利机",
             "type": "cron",
-            "time": "10 9,12,18 * * *",
+            "time": "10 1,13 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_jxnc.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_ys.js"
             }
         },
 
