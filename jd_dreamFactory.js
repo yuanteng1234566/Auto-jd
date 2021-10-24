@@ -1,6 +1,6 @@
 /*
 京东京喜工厂
-更新时间：2021-9-28
+更新时间：2021-4-21
 修复做任务、收集电力出现火爆，不能完成任务，重新计算h5st验证
 参考自 ：https://www.orzlee.com/web-development/2021/03/03/lxk0301-jingdong-signin-scriptjingxi-factory-solves-the-problem-of-unable-to-signin.html
 活动入口：京东APP-游戏与互动-查看更多-京喜工厂
@@ -39,12 +39,12 @@ const helpAu = true; //帮作者助力 免费拿活动
 const notify = $.isNode() ? require('./sendNotify') : '';
 //通知级别 1=生产完毕可兑换通知;2=可兑换通知+生产超时通知+兑换超时通知;3=可兑换通知+生产超时通知+兑换超时通知+未选择商品生产通知(前提：已开通京喜工厂活动);默认第2种通知
 let notifyLevel = $.isNode() ? process.env.JXGC_NOTIFY_LEVEL || 2 : 2;
-const randomCount = $.isNode() ? 0 : 0;
+const randomCount = $.isNode() ? 1 : 0;
 let tuanActiveId = ``, hasSend = false;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '';
 const inviteCodes = [
-  'zulT8XTLky1DEZdgXef6OA==',
+  "zulT8XTLky1DEZdgXef6OA==@NL6BKAs5P5mDbnI52XqxXQ==",
   "zulT8XTLky1DEZdgXef6OA==@6lw84c1ARwpoRyOtfnF77g=="
 ];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -140,8 +140,8 @@ async function jdDreamFactory() {
     await taskList();
     await investElectric();
     await QueryHireReward();//收取招工电力
-    await PickUp();//收取自家的地下零件
-    await stealFriend();
+   // await PickUp();//收取自家的地下零件
+  //  await stealFriend();
      if (tuanActiveId) {
       await tuanActivity();
       await QueryAllTuan();
@@ -1403,10 +1403,10 @@ function shareCodesFormat() {
       const tempIndex = $.index > inviteCodes.length ? (inviteCodes.length - 1) : ($.index - 1);
       $.newShareCodes = inviteCodes[tempIndex].split('@');
     }
-    const readShareCodeRes = await readShareCode();
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
+  //  const readShareCodeRes = await readShareCode();
+ //   if (readShareCodeRes && readShareCodeRes.code === 200) {
+   //   $.newShareCodes = [...new Set([...$.newShareCodes, ...(readShareCodeRes.data || [])])];
+  //  }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify($.newShareCodes)}`)
     resolve();
   })
