@@ -41,6 +41,7 @@ let fcwbinviteCodeArr = []
 let fcwbinviterArr = []
 let fcwbinviteCodes = ''
 let fcwbinviters = ''
+const linkId = 'yCcpwTLIbY6pjaM42ACUVg'
 
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
@@ -55,6 +56,7 @@ if ($.isNode()) {
     console.log('运行一次即可看到助力码 直接输出的变量格式 直接复制在配置文件里')
     console.log('环境变量：export fcwbroud=1  ##挖宝场次 1初级2中级3高级')
     console.log('多账号邀请码用@隔开')
+    console.log('默认内部循环互助')
 
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
@@ -65,7 +67,6 @@ if ($.isNode()) {
 
     } else {
         fcwbinviteCodes = [process.env.fcwbinviteCode]
-
     };
     if (process.env.fcwbinviter && process.env.fcwbinviter.indexOf('@') > -1) {
         fcwbinviterArr = process.env.fcwbinviter.split('@');
@@ -84,7 +85,7 @@ if ($.isNode()) {
             fcwbinviterArr.push(fcwbinviters[item])
         }
     })
-    console.log(`共${fcwbinviteCodeArr.length}个邀请码`)    
+    console.log(`共${fcwbinviteCodeArr.length}个邀请码`)
     for (let i = 0; i < cookiesArr.length; i++) {
         if (!cookiesArr[i]) {
             continue
@@ -106,22 +107,22 @@ if ($.isNode()) {
             continue
         }
         await home()
-        await $.wait(1000)
-        await BROWSE_CHANNEL(1)
-        await $.wait(3000)
-        await BROWSE_CHANNEL(2)
-        await $.wait(3000)
-        await BROWSE_CHANNEL(3)
-        await $.wait(3000)
-        await BROWSE_CHANNEL(4)
-        await $.wait(3000)
+        //         await $.wait(1000)
+        //         await BROWSE_CHANNEL(1)
+        //         await $.wait(3000)
+        //         await BROWSE_CHANNEL(2)
+        //         await $.wait(3000)
+        //         await BROWSE_CHANNEL(3)
+        //         await $.wait(3000)
+        //         await BROWSE_CHANNEL(4)
+        //         await $.wait(3000)
 
-        for (let i = 0; i < 5; i++) {
-            console.log(`挖宝${i}次`)
-            await $.wait(3000)
-            await wb(curRound, i, i)
-            console.log('第' + curRound + '关')
-        }
+        //         for (let i = 0; i < 5; i++) {
+        //             console.log(`挖宝${i}次`)
+        //             await $.wait(3000)
+        //             await wb(curRound, i, i)
+        //             console.log('第' + curRound + '关')
+        //         }
     }
     console.log(`内部互助优先,作者在最后`)
     const url = `https://raw.fastgit.org/asd920/updateTeam/main/shareCodes/fcwb.json`
@@ -137,13 +138,12 @@ if ($.isNode()) {
             continue
         }
         cookie = cookiesArr[i];
+        $.can_help = true
         $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-        console.log(`\n******开始${$.UserName}助力*********\n`);
-        for (let k = 0; k < fcwbinviteCodeArr.length; k++) {
-            $.message = ""
+        console.log(`\n******${$.UserName}开始助力*********\n`);
+        for (let k = 0; k < fcwbinviteCodeArr.length && $.can_help; k++) {
             fcwbinviteCode = fcwbinviteCodeArr[k]
             fcwbinviter = fcwbinviterArr[k]
-            $.index = k + 1;
             await help(fcwbinviter, fcwbinviteCode)
             await $.wait(2000)
         }
@@ -194,10 +194,10 @@ function getAuthorShareCode(url) {
 function wb(round, rowIdx, colIdx) {
 
     return new Promise((resolve) => {
-        //let body = {"round":${fcwbroud},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId":"SS55rTBOHtnLCm3n9UMk7Q"}
+        //let body = {"round":${fcwbroud},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId":linkId}
 
         const nm = {
-            url: `${JD_API_HOST}/?functionId=happyDigDo&body={"round":${fcwbroud},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId":"SS55rTBOHtnLCm3n9UMk7Q"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
+            url: `${JD_API_HOST}/?functionId=happyDigDo&body={"round":${fcwbroud},"rowIdx":${rowIdx},"colIdx":${colIdx},"linkId"::${linkId}}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
 
             headers: {
 
@@ -207,8 +207,6 @@ function wb(round, rowIdx, colIdx) {
 
             }
         }
-
-
         $.get(nm, async (err, resp, data) => {
             try {
                 if (err) {
@@ -236,7 +234,7 @@ function wb(round, rowIdx, colIdx) {
 
 function home() {
     return new Promise((resolve) => {
-        let body = { "linkId": "SS55rTBOHtnLCm3n9UMk7Q" }
+        let body = { "linkId": linkId }
         $.get(taskurl('happyDigHome', body), async (err, resp, data) => {
             //console.log(data)  
             try {
@@ -270,7 +268,7 @@ function home() {
 
 function BROWSE_CHANNEL(taskId) {
     return new Promise((resolve) => {
-        let body = { "linkId": "SS55rTBOHtnLCm3n9UMk7Q", "taskType": "BROWSE_CHANNEL", "taskId": 357, "channel": `${taskId}` }
+        let body = { "linkId": linkId, "taskType": "BROWSE_CHANNEL", "taskId": 357, "channel": `${taskId}` }
         $.get(taskurl('apTaskDetail', body), async (err, resp, data) => {
 
             try {
@@ -299,7 +297,7 @@ function BROWSE_CHANNEL(taskId) {
 function help(fcwbinviter, fcwbinviteCode) {
     return new Promise((resolve) => {
         const nm = {
-            url: `${JD_API_HOST}/?functionId=happyDigHelp&body={"linkId":"SS55rTBOHtnLCm3n9UMk7Q","inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
+            url: `${JD_API_HOST}/?functionId=happyDigHelp&body={"linkId":linkId,"inviter":"${fcwbinviter}","inviteCode":"${fcwbinviteCode}"}&t=1635561607124&appid=activities_platform&client=H5&clientVersion=1.0.0`,
 
             headers: {
 
@@ -309,20 +307,22 @@ function help(fcwbinviter, fcwbinviteCode) {
 
             }
         }
-
         $.get(nm, async (err, resp, data) => {
-
             try {
                 if (err) {
                     console.log(`${JSON.stringify(err)}`)
                     console.log(`${$.name} API请求失败，请检查网路重试`)
                 } else {
+                    // console.debug(data)
                     if (safeGet(data)) {
                         data = JSON.parse(data);
                         if (data.success == true) {
                             console.log('助力：' + data.errMsg)
                         } else if (data.success == false) {
                             console.log('助力：' + data.errMsg)
+                            if (data.cdoe == 16144) {
+                                $.can_help = false
+                            }
                         }
                     }
                 }
