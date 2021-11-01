@@ -102,8 +102,8 @@ let allMessage = '';
 async function jdMofang() {
   console.log(`集魔方 赢大奖`)
   await getInteractionHomeInfo()
-  console.log(`\n集魔方 抽京豆 赢新品`)
-  await getInteractionInfo()
+ // console.log(`\n集魔方 抽京豆 赢新品`)
+ // await getInteractionInfo()
 }
 
 async function getInteractionHomeInfo() {
