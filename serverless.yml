@@ -22,7 +22,7 @@ inputs:
           name: beansign_clublottery_carexchange_shop
           cronExpression: "0 1 0,13 * * * *"
           enable: true
-          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_hwsx&jd_ccSign&jd_mf&jd_carnivalcity
+          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wish&jd_ccSign&jd_mf&jd_carnivalcity
     - timer: #取关京东店铺商品 #京东抽奖机 #京东汽车 #京东秒秒币 #天天提鹅 #领金贴
         parameters:
           name: unsubscribe_lotteryMachine_car_ms_jintie
