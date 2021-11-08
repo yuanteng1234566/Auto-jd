@@ -304,7 +304,15 @@ function GetPropCardCenterInfo() {
                   break;
                 }
               }
-              if (!$.canuse) console.log(`无可用道具卡\n`)
+              for (let key of Object.keys(data.cardInfo.richcard)) {
+                let vo = data.cardInfo.richcard[key]
+                if (vo.dwCardNums > 0) {
+                  $.canuse = true;
+                  await UsePropCard(vo.strCardTypeIndex)
+                  break;
+                }
+              }
+              if (!$.canuse) console.log(`无可用道具卡`)
             } else {
               console.log(`有在使用中的道具卡，跳过使用\n`)
             }
