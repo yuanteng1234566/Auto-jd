@@ -335,7 +335,11 @@ async function doUserLoveInfo() {
             await $.wait(5500);
             console.log(`完成任务：${oneTask.description}`);
             awardInfo = await takeRequest(`newtasksys`,`newtasksys_front/Award`,`source=jxmc_zanaixin&taskId=${oneTask.taskId}&bizCode=jxmc_zanaixin`,`bizCode%2Csource%2CtaskId`,true);
-            console.log(`领取爱心成功，获得${JSON.parse(awardInfo.prizeInfo).prizeInfo}`);
+            if(awardInfo && awardInfo.prizeInfo && JSON.parse(awardInfo.prizeInfo)){
+                console.log(`领取爱心成功，获得${JSON.parse(awardInfo.prizeInfo).prizeInfo || ''}`);
+            }else{
+                console.log(`领取爱心：${JSON.stringify(awardInfo)}`);
+            }        
         }
     }
     let userLoveInfo = await takeRequest(`jxmc`, `queryservice/GetUserLoveInfo`, ``, undefined, true);
