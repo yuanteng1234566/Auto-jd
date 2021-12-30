@@ -6,14 +6,11 @@
 [task_local]
 #京东小魔方
 31 2,8 * * * https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_mf.js, tag=京东小魔方, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
-
 ================Loon==============
 [Script]
 cron "31 2,8 * * *" script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_mf.js,tag=京东小魔方
-
 ===============Surge=================
 京东小魔方 = type=cron,cronexp="31 2,8 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_mf.js
-
 ============小火箭=========
 京东小魔方 = type=cron,script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_mf.js, cronexpr="31 2,8 * * *", timeout=3600, enable=true
  */
@@ -24,7 +21,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
-let uuid
+let uuid, pageId, activityId;
 $.shareCodes = []
 let hotInfo = {}
 if ($.isNode()) {
@@ -67,30 +64,30 @@ let allMessage = '';
       hotInfo[$.UserName] = $.hot
     }
   }
-  for (let i = 0; i < cookiesArr.length; i++) {
-    cookie = cookiesArr[i];
-    $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
-    $.canHelp = true
-    if (hotInfo[$.UserName]) continue
-    if ($.shareCodes && $.shareCodes.length) {
-      console.log(`\n开始内部助力`)
-      for (let j = 0; j < $.shareCodes.length && $.canHelp; j++) {
-        console.log(`\n账号${$.UserName} 去助力 ${$.shareCodes[j].use} 的助力码 ${$.shareCodes[j].code}`)
-        if ($.UserName === $.shareCodes[j].use) {
-          console.log(`助力失败：不能助力自己`)
-          continue
-        }
-        $.delcode = false
-        await doInteractiveAssignment("assistTaskDetail", $.encryptProjectId, $.sourceCode, $.encryptAssignmentId, $.shareCodes[j].code)
-        await $.wait(2000)
-        if ($.delcode) {
-          $.shareCodes.splice(j, 1)
-          j--
-          continue
-        }
-      }
-    }
-  }
+  // for (let i = 0; i < cookiesArr.length; i++) {
+  //   cookie = cookiesArr[i];
+  //   $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+  //   $.canHelp = true
+  //   if (hotInfo[$.UserName]) continue
+  //   if ($.shareCodes && $.shareCodes.length) {
+  //     console.log(`\n开始内部助力`)
+  //     for (let j = 0; j < $.shareCodes.length && $.canHelp; j++) {
+  //       console.log(`\n账号${$.UserName} 去助力 ${$.shareCodes[j].use} 的助力码 ${$.shareCodes[j].code}`)
+  //       if ($.UserName === $.shareCodes[j].use) {
+  //         console.log(`助力失败：不能助力自己`)
+  //         continue
+  //       }
+  //       $.delcode = false
+  //       await doInteractiveAssignment("assistTaskDetail", $.encryptProjectId, $.sourceCode, $.encryptAssignmentId, $.shareCodes[j].code)
+  //       await $.wait(2000)
+  //       if ($.delcode) {
+  //         $.shareCodes.splice(j, 1)
+  //         j--
+  //         continue
+  //       }
+  //     }
+  //   }
+  // }
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -100,10 +97,10 @@ let allMessage = '';
   })
 
 async function jdMofang() {
-  console.log(`集魔方 赢大奖`)
-  await getInteractionHomeInfo()
-  // console.log(`\n集魔方 抽京豆 赢新品`)
-  // await getInteractionInfo()
+  // console.log(`集魔方 赢大奖`)
+  // await getInteractionHomeInfo()
+  console.log(`\n集魔方 抽京豆 赢新品`)
+  await getInteractionInfo()
 }
 
 async function getInteractionHomeInfo() {
@@ -274,7 +271,7 @@ function doInteractiveAssignment(extraType, encryptProjectId, sourceCode, encryp
 
 async function getInteractionInfo(type = true) {
   return new Promise(async (resolve) => {
-    $.post(taskPostUrl("getInteractionInfo", {"sign":3}), async (err, resp, data) => {
+    $.post(taskPostUrl("getInteractionInfo", {"geo":{"lng":"","lat":""},"mcChannel":0,"sign":3}), async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -283,13 +280,15 @@ async function getInteractionInfo(type = true) {
           if (safeGet(data)) {
             data = JSON.parse(data)
             if (type) {
+              await getActiveInfo()
+              await qryH5BabelFloors()
               $.interactionId = data.result.interactionId
               $.taskPoolId = data.result.taskPoolInfo.taskPoolId
               for (let key of Object.keys(data.result.taskPoolInfo.taskList)) {
                 let vo = data.result.taskPoolInfo.taskList[key]
                 if (vo.taskStatus === 0) {
                   if (vo.taskId === 2002) {
-                    await queryPanamaPage(vo.groupId)
+                    await qryCompositeMaterials(vo.groupId)
                     for (let id of $.sku) {
                       $.complete = false
                       await executeNewInteractionTask(vo.taskId, vo.groupId, id)
@@ -297,7 +296,8 @@ async function getInteractionInfo(type = true) {
                       if ($.complete) break
                     }
                   } else {
-                    for (let id of vo.taskGroupList) {
+                    await qryCompositeMaterials($.id[vo.taskId])
+                    for (let id of $.sku) {
                       $.complete = false
                       await executeNewInteractionTask(vo.taskId, id)
                       await $.wait(2000)
@@ -335,24 +335,77 @@ async function getInteractionInfo(type = true) {
     })
   })
 }
-function queryPanamaPage(groupId) {
+
+async function getActiveInfo(url = 'https://prodev.m.jd.com/mall/active/TqTRGRrp9HZTfeyRTL2UGmX4mHG/index.html') {
+  let options = {
+    url,
+    headers: {
+      "Host": "prodev.m.jd.com",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+      "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Cookie": cookie
+    }
+  }
+  return new Promise(async resolve => {
+    $.get(options, async (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(JSON.stringify(err))
+          console.log(`${$.name} getActiveInfo API请求失败，请检查网路重试`)
+        } else {
+          if (data) {
+            data = data && data.match(/window\.performance.mark\(e\)}}\((.*)\);<\/script>/)[1]
+            data = JSON.parse(data)
+            pageId = data.activityInfo.pageId
+            activityId = data.activityInfo.activityId
+            $.enActId = data.activityInfo.encodeActivityId
+            $.paginationFlrs = data.paginationFlrs
+          }
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+function qryH5BabelFloors() {
+  let body = {"activityId":$.enActId,"pageNum":"-1","innerAnchor":"","innerExtId":"","hideTopFoot":"","innerLinkBase64":"","innerIndex":"0","focus":"","forceTop":"","addressId":"","posLng":"","posLat":"","homeLng":"","homeLat":"","gps_area":"","headId":"","headArea":"","warehouseId":"","jxppGroupid":"","jxppFreshman":"","dcId":"","babelChannel":"ttt32","mitemAddrId":"","geo":{"lng":"","lat":""},"flt":"","jda":"168871293.16364847756711555509969.1636484775.1640742900.1640764602.246","topNavStyle":"","url":`https://prodev.m.jd.com/mall/active/${$.enActId}/index.html`,"fullUrl":`https://prodev.m.jd.com/mall/active/${$.enActId}/index.html`,"autoSkipEmptyPage":false,"paginationParam":"2","paginationFlrs":$.paginationFlrs,"transParam":`{\"bsessionId\":\"\",\"babelChannel\":\"ttt32\",\"actId\":\"${activityId}\",\"enActId\":\"${$.enActId}\",\"pageId\":\"${pageId}\",\"encryptCouponFlag\":\"1\",\"sc\":\"apple\",\"scv\":\"10.3.0\",\"requestChannel\":\"h5\",\"jdAtHomePage\":\"0\",\"utmFlag\":\"0\"}`,"siteClient":"apple","siteClientVersion":"10.3.0","matProExt":{"unpl":""},"userInterest":{"whiteNote":"0_0_0","payment":"0_0_0","plusNew":"0_0_0","plusRenew":"0_0_0"}}
+  let options = {
+    url: `https://api.m.jd.com/?client=wh5&clientVersion=1.0.0&functionId=qryH5BabelFloors`,
+    body: `body=${encodeURIComponent(JSON.stringify(body))}`,
+    headers: {
+      "Host": "api.m.jd.com",
+      "Accept": "*/*",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Origin": "https://prodev.m.jd.com",
+      "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+      "Referer": "https://prodev.m.jd.com/",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Cookie": cookie
+    }
+  }
   return new Promise((resolve) => {
-    $.post(taskPostUrl("queryPanamaPage", {"activityId":"3v2Wu9KsgwzW92931wj7sYCRjueP","dynamicParam":{},"geo":{"lng":"","lat":""},"previewTime":""}), (err, resp, data) => {
+    $.post(options, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} queryPanamaPage API请求失败，请检查网路重试`)
+          console.log(`${$.name} qryH5BabelFloors API请求失败，请检查网路重试`)
         } else {
           if (safeGet(data)) {
             data = JSON.parse(data)
+            $.id = {}
             for (let key of Object.keys(data.floorList)) {
               let vo = data.floorList[key]
-              if (vo.data && vo.data.head && vo.data.head.groupId === groupId) {
-                for (let key of Object.keys(vo.data.head.list)) {
-                  let skuVo = vo.data.head.list[key]
-                  $.sku.push(skuVo.skuId)
+              if (vo.materialParams && vo.materialParams.advId1[0].materialParam) {
+                if (vo.materialParams.advId1[0].materialParam.next[0].type === "productGroup") {
+                  $.id[2004] = vo.materialParams.advId1[0].advGrpId
+                } else if (vo.materialParams.advId1[0].materialParam.next[0].type === "advertGroup") {
+                  $.id[2006] = vo.materialParams.advId1[0].advGrpId
                 }
-                break
               }
             }
           }
@@ -365,9 +418,41 @@ function queryPanamaPage(groupId) {
     })
   })
 }
-function executeNewInteractionTask(taskType, advertId, sku = '') {
-  let body = {"sign":3,"interactionId":$.interactionId,"taskPoolId":$.taskPoolId,"taskType":taskType,"advertId":advertId}
-  if (taskType === 2002) body["sku"] = sku
+
+function qryCompositeMaterials(groupId) {
+  return new Promise((resolve) => {
+    $.post(taskPostUrl("qryCompositeMaterials", {"geo":{"lng":"","lat":""},"mcChannel":0,"activityId":activityId,"pageId":pageId,"qryParam":`[{\"type\":\"advertGroup\",\"id\":\"${groupId}\",\"mapTo\":\"advData\",\"next\":[{\"type\":\"productGroup\",\"mapKey\":\"desc\",\"mapTo\":\"productGroup\",\"attributes\":13}]}]`,"applyKey":"21new_products_h"}, false), (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`${$.name} qryCompositeMaterials API请求失败，请检查网路重试`)
+        } else {
+          if (safeGet(data)) {
+            data = JSON.parse(data)
+            for (let key of Object.keys(data.data.advData.list)) {
+              let vo = data.data.advData.list[key]
+              if (vo.extension && vo.extension.groupId === groupId) {
+                $.sku.push(vo.advertId)
+              }
+            }
+          }
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve(data)
+      }
+    })
+  })
+}
+
+function executeNewInteractionTask(taskType, advertId = '', sku = '') {
+  let body = {"geo":{"lng":"","lat":""},"mcChannel":0,"sign":3,"interactionId":$.interactionId,"taskPoolId":$.taskPoolId,"taskType":taskType}
+  if (taskType === 2002) {
+    body["sku"] = sku
+  } else {
+    body["advertId"] = advertId
+  }
   return new Promise((resolve) => {
     $.post(taskPostUrl("executeNewInteractionTask", body), (err, resp, data) => {
       try {
@@ -393,7 +478,7 @@ function executeNewInteractionTask(taskType, advertId, sku = '') {
 }
 function getNewFinalLotteryInfo() {
   return new Promise((resolve) => {
-    $.post(taskPostUrl("getNewFinalLotteryInfo", {"sign":3,"interactionId":$.interactionId}), (err, resp, data) => {
+    $.post(taskPostUrl("getNewFinalLotteryInfo", {"geo":{"lng":"","lat":""},"mcChannel":0,"sign":3,"interactionId":$.interactionId}), (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -433,21 +518,19 @@ function taskUrl(functionId, body = {}) {
     }
   }
 }
-function taskPostUrl(functionId, body = {}) {
-  body = JSON.stringify(body)
-  if (functionId === "queryPanamaPage") body = escape(body)
+function taskPostUrl(functionId, body = {}, uid = true) {
+  if (uid) uuid = ''
   return {
-    url: `${JD_API_HOST}?functionId=${functionId}&body=${body}&client=wh5&clientVersion=10.1.4&appid=content_ecology&eufv=false&uuid=${uuid}&t=${Date.now()}`,
+    url: `${JD_API_HOST}?uuid=${uuid}&client=wh5&clientVersion=10.3.0&ext={"prstate":"0"}&appid=content_ecology&functionId=${functionId}&t=${Date.now()}&body=${encodeURIComponent(JSON.stringify(body))}`,
     headers: {
-      'Host': 'api.m.jd.com',
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Origin': 'https://h5.m.jd.com',
-      'Accept-Language': 'zh-cn',
-      'User-Agent': $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
-      'Referer': 'https://h5.m.jd.com/babelDiy/Zeus/2umkvbpZCUtyN6gcymN88ew8WLeU/index.html',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Cookie': cookie
+      "Host": "api.m.jd.com",
+      "Accept": "application/json, text/plain, */*",
+      "Origin": "https://prodev.m.jd.com",
+      "Referer": "https://prodev.m.jd.com/",
+      "Accept-Encoding": "gzip, deflate, br",
+      "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+      "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+      "Cookie": cookie
     }
   }
 }
