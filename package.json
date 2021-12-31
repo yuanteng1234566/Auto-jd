@@ -18,6 +18,7 @@
   "dependencies": {
     "crypto-js": "^4.1.1",
     "got": "^11.8.2",
+    "download": "^6.2.5",
     "png-js": "^1.0.0",
     "request": "^2.88.2",
     "tough-cookie": "^4.0.0",
