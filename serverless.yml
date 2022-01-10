@@ -22,13 +22,13 @@ inputs:
           name: beansign_clublottery_carexchange_shop
           cronExpression: "0 1 0,13 * * * *"
           enable: true
-          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wish&jd_ccSign&jd_mf&jd_carnivalcity
+          argument: jd_bean_sign&jd_club_lottery&jd_shop&jd_wish&jd_ccSign&jd_&jd_city
     - timer: #取关京东店铺商品 #京东抽奖机 #京东汽车 #京东秒秒币 #天天提鹅 #领金贴
         parameters:
           name: unsubscribe_lotteryMachine_car_ms_jintie
           cronExpression: "0 0 0 * * * *"
           enable: true
-          argument: jd_unsubscribe&jd_lotteryMachine&jd_car&jd_ms&jd_jin_tie&jd_sign_graphics&jd_jxqd
+          argument: jd_unsubscribe&jd_lotteryMachine&jd_gold_sign&jd_ms&jd_jin_tie&jd_sign_graphics&jd_jxqd
     - timer: #东东农场 #东东萌宠 #京喜农场 #京东极速版红包 #泡泡大战 #美丽研究院
         parameters:
           name: fruit_pet_jxnc_speedsign_speedredpocke_beauty
@@ -46,13 +46,13 @@ inputs:
           name: joyreward_cash_smallhome_live
           cronExpression: "0 0 0-16/8,20 * * * *"
           enable: true
-          argument: jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redPacket&jd_connoisseur
+          argument: jd_cash&jd_small_home&jd_live&jd_gold_creator&jd_redEnvelope&jd_connoisseur
     - timer: #健康社区 #旺旺开工位一次性
         parameters:
           name: healthcommunity
           cronExpression: "2 36 0,6-23/4 * * * *"
           enable: true
-          argument: jd_zjb&jd_joy&jd_bookshop&jd_z_health_community&jd_city&jd_ys
+          argument: jd_zjb&jd_joy&jd_bookshop&jd_z_health_community&jd_city&jd_mpdzcar
     - timer: #天天提鹅 #健康社区 #618动物联萌 #5G超级盲盒 #挖现金 #推一推 #省钱大赢家之翻翻乐 
         parameters:
           name: dailyegg_superredrain_mohe
@@ -70,7 +70,7 @@ inputs:
           name: beanchange_crazyjoy_rankingList_beanhome_sgmh
           cronExpression: "0 30 1,13 * * * *"
           enable: true
-          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_carnivalcity_help
+          argument: jd_bean_change&jd_rankingList&jd_bean_home&jd_sgmh&jd_dpqd&jd_joy_park_task&jd_mpdzcar_game
     - timer: #金融养猪 #十元街 #京东快递 #京东赚赚 #女装盲盒  #跳跳乐瓜分京豆
         parameters:
           name: pigPet_syj_kd_jdzz_sign_nzmh_follow
