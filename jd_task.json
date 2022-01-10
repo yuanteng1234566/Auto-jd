@@ -698,13 +698,13 @@
       }
     },
        {
-      "name": "手机狂欢城助力",
+      "name": "会场红包",
       "type": "cron",
-      "time": "10 0,8 * * *",
+      "time": "0 0,23,12 * * *",
       "running": true,
       "job": {
         "type": "runjs",
-        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_carnivalcity_help.js"
+        "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_redEnvelope.js"
       }
     },
       {
