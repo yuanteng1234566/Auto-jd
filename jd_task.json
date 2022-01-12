@@ -574,7 +574,7 @@
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_hwsx.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_wish.js"
             }
         },
         {
@@ -588,23 +588,23 @@
             }
         },
         {
-            "name": "QQ星",
+            "name": "京东金榜",
             "type": "cron",
-            "time": "1 0-23/2 * * *",
+            "time": "13 6 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_qqxing.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_gold_sign.js"
             }
         },
       {
-            "name": "零食街",
+            "name": "京东超级盒子",
             "type": "cron",
-            "time": "0 11 * * *",
+            "time": "24 3,13 * * *",
             "running": true,
             "job": {
                 "type": "runjs",
-                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_lsj.js"
+                "target": "https://gitee.com/asd920/Auto-jd/raw/main/jd_cjhz.js"
             }
         },
             {
@@ -680,7 +680,7 @@
        {
       "name": "特物z",
       "type": "cron",
-      "time": "cron 23 8,9 * * *",
+      "time": "23 8,9 * * *",
       "running": true,
       "job": {
         "type": "runjs",
