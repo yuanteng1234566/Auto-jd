@@ -1,6 +1,6 @@
 /*
 京喜签到
-cron 20 1,8 * * * jx_sign.js
+cron 20 1,8 * * * jd_jxqd.js
 活动入口：京喜APP-我的-京喜签到
 
 已支持IOS双京东账号,Node.js支持N个京东账号
