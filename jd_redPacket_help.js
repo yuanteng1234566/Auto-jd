@@ -5,7 +5,7 @@
 helpnum 助力前面ck数量,建议1-3,换景变量支持 HELP_NUM
 少并发,防止黑ip
 不开红包,只助力,开包的跑一下 jd_redPacket.js
-1 1,2,23 * * * jd_redPacket_help.js https://raw.githubusercontent.com/asd920/Auto-jd/jd_redPacket_help.js
+1 2,11,23 * * * jd_redPacket_help.js https://raw.githubusercontent.com/asd920/Auto-jd/jd_redPacket_help.js
  */
 const $ = new Env('京东全民开红包助力-纯助力');
 const notify = $.isNode() ? require('./sendNotify') : '';
