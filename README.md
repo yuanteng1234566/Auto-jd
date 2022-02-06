@@ -3,9 +3,9 @@
 
 【青龙】拉取仓库命令
 ```
-ql repo https://github.com/asd920/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"
+ql repo https://github.com/setsailqq/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"
 ```
-* > 上面命令拉取错误的使用这个：`ql repo https://github.com.cnpmjs.org/asd920/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"`
+* > 上面命令拉取错误的使用这个：`ql repo https://github.com.cnpmjs.org/setsailqq/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"`
 
 如遇到仓库更新失败，可以给宿主机挂代理并注释 config.sh 文件中的文件中的GithubProxyUrl参数解决，无法挂代理的可以修改青龙 config.sh 文件中的GithubProxyUrl参数为 https://pd.zwc365.com/ 或 https://pd.zwc365.com/cfworker/ 临时解决。
 
@@ -16,7 +16,7 @@ ql repo https://github.com/asd920/Auto-jd.git "jd_|jx_|getJDCookie" "backUp|icon
     * 订阅任务：`https://ghproxy.com/https://raw.githubusercontent.com/asd920/Auto-jd/main/jd_task.json`
     * elecV2P京东CK、通知填写格式等相关补充说明：[点此查看](./backUp/elecV2P.md)  
 
-## 自动同步本仓库脚本教程：[点此查看](https://github.com/asd920/Auto-jd/blob/main/backUp/reposync.md)  
+## 自动同步本仓库脚本教程：[点此查看](https://github.com/setsailqq/Auto-jd/blob/main/backUp/reposync.md)  
 
 - 获取京东cookie教程可参考：
   
