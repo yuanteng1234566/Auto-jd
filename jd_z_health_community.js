@@ -20,8 +20,21 @@ const jdCookieNode = $.isNode() ? require("./jdCookie.js") : "";
 const notify = $.isNode() ? require('./sendNotify') : "";
 let cookiesArr = [], cookie = "", allMessage = "", message;
 const inviteCodes = [
-  `T0225KkcRBgR8AbVIR_zwv8NcACjVfnoaW5kRrbA@T012_aUqHklGqQiLCjVfnoaW5kRrbA`,
-  `T0225KkcRBgR8AbVIR_zwv8NcACjVfnoaW5kRrbA@T0225KkcRE1LoFKGKU_9nfQJIQCjVfnoaW5kRrbA`
+    `T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA`,
+  `T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA@T0156KgqFVxKrQGJfEMCjVfnoaW5kRrbA`,
+  `T015ufpxSBwf_F3QT0cCjVfnoaW5kRrbA@T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA`,
+   `T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA`,
+  `T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA@T0156KgqFVxKrQGJfEMCjVfnoaW5kRrbA`,
+  `T015ufpxSBwf_F3QT0cCjVfnoaW5kRrbA@T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA`,
+   `T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA`,
+  `T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA@T0156KgqFVxKrQGJfEMCjVfnoaW5kRrbA`,
+  `T015ufpxSBwf_F3QT0cCjVfnoaW5kRrbA@T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA`,
+   `T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA`,
+  `T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA@T0156KgqFVxKrQGJfEMCjVfnoaW5kRrbA`,
+  `T015ufpxSBwf_F3QT0cCjVfnoaW5kRrbA@T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA`,
+   `T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA`,
+  `T012_ag3A09AqVXWCjVfnoaW5kRrbA@T0225KkcRxhL9lOFcx6ikP9eJwCjVfnoaW5kRrbA@T0156KgqFVxKrQGJfEMCjVfnoaW5kRrbA`,
+  `T015ufpxSBwf_F3QT0cCjVfnoaW5kRrbA@T0225KkcRh8f_VfTIh_1kvBfcgCjVfnoaW5kRrbA@T012_ag3A09AqVXWCjVfnoaW5kRrbA`,
 ]
 let reward = $.isNode() ? (process.env.JD_HEALTH_REWARD_NAME ? process.env.JD_HEALTH_REWARD_NAME : '') : ($.getdata('JD_HEALTH_REWARD_NAME') ? $.getdata('JD_HEALTH_REWARD_NAME') : '');
 const randomCount = $.isNode() ? 20 : 5;
