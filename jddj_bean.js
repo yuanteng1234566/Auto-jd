@@ -1,11 +1,5 @@
 /*
 京东到家鲜豆任务脚本,支持qx,loon,shadowrocket,surge,nodejs
-兼容京东jdCookie.js
-手机设备在boxjs里填写cookie
-boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
-TG群:https://t.me/passerbyb2021
-[task_local]
-45 1 * * * https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_bean.js
 [Script]
 cron "45 1 * * *" script-path=https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_bean.js,tag=京东到家鲜豆任务
 */
