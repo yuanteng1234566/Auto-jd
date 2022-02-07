@@ -394,11 +394,7 @@ function cashOut(id,poolBaseId,prizeGroupId,prizeBaseId,) {
 }
 
 function invite2() {
-  let inviterIdArr = [
-    "5V7vHE23qh2EkdBHXRFDuA==",
-    "Yvk/fMWJC/6lvcx1iUFnsw==",
-    "E9EvSFNuA1pahSQT0uSsXkW1v0j+QOHQbk8+peJYc0I="
-  ]
+  let inviterIdArr = []
   let inviterId = inviterIdArr[Math.floor((Math.random() * inviterIdArr.length))]
   let options = {
     url: "https://api.m.jd.com/",
