@@ -6,7 +6,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync-zero205-scripts
+    types: sync-asd920-scripts
 jobs:
   repo-sync:
     env:
@@ -19,11 +19,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync zero205-scripts
+      - name: sync asd920-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/zero205/JD_tencent_scf.git"
+          source_repo: "https://github.com/asd920/Auto-jd.git"
           source_branch: "main"
           destination_branch: "main"
           github_token: ${{ secrets.PAT }}
@@ -34,6 +34,6 @@ jobs:
         with:
           src: ${{ secrets.SRC_USER }}
           dst: ${{ secrets.DST_USER }}
-          static_list: "JD_tencent_scf"
+          static_list: "Auto-jd"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}

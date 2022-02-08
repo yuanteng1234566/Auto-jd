@@ -4,6 +4,7 @@ const fs = require("fs");
 const yaml = require("js-yaml");
 
 process.env.action = 0;
+const MemorySize=process.env.TENCENT_MemorySize?(Number(process.env.TENCENT_MemorySize)>64?128:64):128;
 const ScfClient = tencentcloud.scf.v20180416.Client;
 const clientConfig = {
   credential: {
@@ -56,7 +57,8 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
         },
         FunctionName: process.env.TENCENT_FUNCTION_NAME,
         Runtime: "Nodejs12.16",
-        Timeout: 86400,
+        MemorySize: MemorySize,
+        Timeout: 18000,
         AsyncRunEnable: "true",
         Environment: {
           Variables: []
