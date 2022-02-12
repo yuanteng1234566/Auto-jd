@@ -5,7 +5,7 @@
 ```
 ql repo https://github.com/asd920/Auto.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"
 ```
-* > 上面命令拉取错误的使用这个：`ql repo https://github.com.cnpmjs.org/asd920/Auto.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"`
+* > 上面命令拉取错误的使用这个：`ql repo https://gitee.com/asd920/Auto.git "jd_|jx_|getJDCookie" "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign|JD_DailyBonus"`
 
 如遇到仓库更新失败，可以给宿主机挂代理并注释 config.sh 文件中的文件中的GithubProxyUrl参数解决，无法挂代理的可以修改青龙 config.sh 文件中的GithubProxyUrl参数为 https://pd.zwc365.com/ 或 https://pd.zwc365.com/cfworker/ 临时解决。
 
