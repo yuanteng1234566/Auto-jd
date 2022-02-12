@@ -34,6 +34,6 @@ jobs:
         with:
           src: ${{ secrets.SRC_USER }}
           dst: ${{ secrets.DST_USER }}
-          static_list: "Auto-jd"
+          static_list: "Auto"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
