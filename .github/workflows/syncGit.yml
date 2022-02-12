@@ -23,7 +23,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/asd920/Auto-jd.git"
+          source_repo: "https://github.com/asd920/Auto.git"
           source_branch: "main"
           destination_branch: "main"
           github_token: ${{ secrets.PAT }}
