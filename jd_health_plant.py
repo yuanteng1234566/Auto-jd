@@ -31,6 +31,7 @@ new Env('京东健康社区-种植园自动任务');
 
 
 
+
 ######################################################以下代码请不要乱改######################################
 
 UserAgent = ''
@@ -59,7 +60,7 @@ tomorrow=(datetime.datetime.now() + datetime.timedelta(days=1)).strftime('%Y-%m-
 nowtime = datetime.datetime.now ().strftime ('%Y-%m-%d %H:%M:%S.%f8')
 
 time1 = '21:00:00.00000000'
-time2 = '23:00:00.00000000'
+time2 = '22:00:00.00000000'
 
 flag_time1 = '{} {}'.format (today, time1)
 flag_time2 = '{} {}'.format (today, time2)
@@ -143,8 +144,9 @@ if "plant_cookie" in os.environ:
             cookies.append(cookies1[int(i)-1])
         printT ("已获取并使用Env环境plant_cookies")
 else:
-    printT ("变量plant_cookie未填写")
-    exit (0)
+    if cookie == '':
+        printT ("变量plant_cookie未填写")
+        exit (0)
 
 if "charge_targe_id" in os.environ:
     if len (os.environ["charge_targe_id"]) > 8:
@@ -363,7 +365,7 @@ def get_sleep(cookies,sid):
             taskId = taskToken_list[i]['taskId']
             if "早睡" in taskName:
                 taskToken = taskToken_list[i]['threeMealInfoVos'][0]['taskToken']
-            return taskName,taskId,taskToken
+                return taskName,taskId,taskToken
         except Exception as e:
             print (e)
 
@@ -406,6 +408,7 @@ def get_task(cookies,sid,account):
     except Exception as e:
         print (e)
         msg("【账号{0}】浏览任务已全部完成".format(account))
+        return '', '', ''
 
 #获取加购任务信息
 def get_task2(cookies,sid,account):
@@ -441,7 +444,7 @@ def get_task2(cookies,sid,account):
     except Exception as e:
         print (e)
         msg("【账号{0}】加购任务已全部完成".format(account))
-
+        return '','',''
 
 #做任务
 def do_task(cookies,taskName,taskId,taskToken,sid,account):
@@ -551,19 +554,19 @@ def start():
             account = setName (cookie)
             access_token = get_ck(cookie,sid_ck,account)
             cookie = get_Authorization (access_token, account)
-            get_planted_info (cookie,sid)
+            get_planted_info (cookie, sid,account)
             if nowtime > flag_time1 and nowtime < flag_time2:
                 taskName,taskId,taskToken = get_sleep (cookie,sid)
                 do_task(cookie,taskName,taskId,taskToken,sid,account)
-                charge(charge_targe_id,cookie,sid,sid,account)
+                charge(charge_targe_id,cookie,sid,account)
             else:
                 taskName_list,taskId_list,taskToken_list = get_task (cookie,sid,account)
                 for i,j,k in zip(taskName_list,taskId_list,taskToken_list):
                     do_task(cookie,i,j,k,sid,account)
-                taskName, taskId, taskToken_list = get_task2 (cookie, account)
+                taskName, taskId, taskToken_list = get_task2(cookie,sid,account)
                 for i in taskToken_list:
                     do_task2 (cookie, taskName, taskId, i, sid,account)
-                charge(charge_targe_id,cookie,account)
+                charge(charge_targe_id,cookie,sid, account)
         elif cookies != '':
             for cookie, charge_targe_id in zip (cookies, charge_targe_ids):
                 account = setName (cookie)
@@ -583,7 +586,7 @@ def start():
                         taskName_list, taskId_list, taskToken_list = get_task (cookie, sid,account)
                         for i, j, k in zip (taskName_list, taskId_list, taskToken_list):
                             do_task (cookie, i, j, k, sid,account)
-                        taskName, taskId, taskToken_list = get_task2 (cookie, account)
+                        taskName, taskId, taskToken_list = get_task2 (cookie,sid, account)
                         for i in taskToken_list:
                             do_task2 (cookie, taskName, taskId, i, sid,account)
                     charge (charge_targe_id, cookie,sid, account)
