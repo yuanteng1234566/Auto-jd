@@ -135,7 +135,7 @@ if (process.env.PUSH_PLUS_USER) {
 
 async function sendNotify(text, desp, params = {}) {
   //提供6种通知
-  desp += `\n【通知】：\n本仓库备份地址：\nhttps://gitee.com/asd920/Auto-jd`;
+  desp += `\n【通知】：\n本仓库备份地址：\nhttps://gitee.com/asd920/Auto`;
   await Promise.all([
     serverNotify(text, desp),//微信server酱
     pushPlusNotify(text, desp)//pushplus(推送加)
